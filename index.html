@@ -3,25 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Art & New Media - Student Database</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=VT323&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+    <title>Digital Art & New Media Database</title>
+    <style type="text/css">
         * {cursor: url(https://cur.cursors-4u.net/anime/ani-12/oth1124.ani), url(https://cur.cursors-4u.net/anime/ani-12/oth1124.png), auto !important;}
         
         body {
-            font-family: 'Courier Prime', monospace;
+            font-family: 'Courier New', monospace;
             background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
             background-size: 400% 400%;
             animation: gradientShift 8s ease infinite;
+            margin: 0;
+            padding: 20px;
             color: #000;
-            overflow-x: hidden;
+            min-height: 100vh;
         }
         
         @keyframes gradientShift {
@@ -33,245 +27,157 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.9);
-            margin-top: 20px;
-            margin-bottom: 20px;
-            border: 3px solid #000;
-            box-shadow: 10px 10px 0px #ff00ff;
+            background: rgba(255, 255, 255, 0.95);
+            border: 5px solid #000;
+            box-shadow: 10px 10px 0px #ff00ff, 20px 20px 0px #00ffff;
+            padding: 30px;
         }
         
-        header {
+        .header {
             text-align: center;
+            border-bottom: 3px dashed #000;
+            padding-bottom: 20px;
             margin-bottom: 30px;
-            padding: 20px;
-            background: linear-gradient(90deg, #ff00ff, #00ffff);
-            border: 2px solid #000;
-            position: relative;
         }
         
-        header::before {
-            content: "";
-            position: absolute;
-            top: -5px;
-            left: -5px;
-            right: -5px;
-            bottom: -5px;
-            background: linear-gradient(45deg, #ffff00, #ff00ff, #00ffff, #ffff00);
-            z-index: -1;
-            animation: borderGlow 2s linear infinite;
+        .header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            text-shadow: 3px 3px 0px #ff00ff, 6px 6px 0px #00ffff;
+            animation: textBlink 2s infinite;
         }
         
-        @keyframes borderGlow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        h1 {
-            font-family: 'VT323', monospace;
-            font-size: 3rem;
-            color: #000;
-            text-shadow: 3px 3px 0px #ffff00;
-            animation: textFlicker 2s infinite;
-        }
-        
-        @keyframes textFlicker {
-            0%, 90% { opacity: 1; }
-            95% { opacity: 0.5; }
-            100% { opacity: 1; }
+        @keyframes textBlink {
+            0%, 50% { opacity: 1; }
+            25%, 75% { opacity: 0.7; }
         }
         
         .subtitle {
-            font-size: 1.2rem;
-            margin-top: 10px;
-            color: #000;
-            font-weight: bold;
-        }
-        
-        .nav-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-        
-        .nav-btn {
-            padding: 10px 20px;
+            font-size: 1.2em;
+            margin: 10px 0;
             background: #ffff00;
+            padding: 5px 10px;
             border: 2px solid #000;
-            color: #000;
-            font-family: 'VT323', monospace;
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            box-shadow: 3px 3px 0px #ff00ff;
-        }
-        
-        .nav-btn:hover {
-            background: #ff00ff;
-            color: #fff;
-            transform: translate(-2px, -2px);
-            box-shadow: 5px 5px 0px #00ffff;
-        }
-        
-        .nav-btn.active {
-            background: #00ffff;
-            color: #000;
-        }
-        
-        .section {
-            display: none;
-            background: rgba(255, 255, 255, 0.95);
-            border: 2px solid #000;
-            margin: 20px 0;
-            padding: 20px;
-            box-shadow: 5px 5px 0px #00ffff;
-        }
-        
-        .section.active {
-            display: block;
-        }
-        
-        .section h2 {
-            font-family: 'VT323', monospace;
-            font-size: 2rem;
-            color: #000080;
-            text-shadow: 2px 2px 0px #ffff00;
-            margin-bottom: 15px;
-            border-bottom: 3px solid #ff00ff;
-            padding-bottom: 10px;
-        }
-        
-        .section h3 {
-            font-family: 'VT323', monospace;
-            font-size: 1.5rem;
-            color: #000080;
-            text-shadow: 1px 1px 0px #ffff00;
-            margin: 20px 0 10px 0;
+            display: inline-block;
         }
         
         .unit {
-            background: rgba(255, 255, 0, 0.2);
-            border: 2px dashed #ff00ff;
-            padding: 20px;
+            border: 3px solid #000;
             margin: 20px 0;
-            position: relative;
+            background: #fff;
+            transition: all 0.3s ease;
         }
         
         .unit.locked {
-            opacity: 0.3;
-            pointer-events: none;
-            background: rgba(128, 128, 128, 0.2);
+            background: #666;
+            color: #ccc;
+            opacity: 0.5;
         }
         
-        .unit.locked::after {
-            content: "🔒 LOCKED";
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #ff0000;
-            color: #fff;
-            padding: 5px 10px;
-            font-family: 'VT323', monospace;
-            font-size: 1rem;
-            border: 1px solid #000;
+        .unit-header {
+            background: linear-gradient(90deg, #ff00ff, #00ffff);
+            padding: 15px;
+            cursor: pointer;
+            border-bottom: 3px solid #000;
+            position: relative;
+        }
+        
+        .unit-header:hover {
+            background: linear-gradient(90deg, #00ffff, #ff00ff);
         }
         
         .unit-title {
-            font-family: 'VT323', monospace;
-            font-size: 1.8rem;
-            color: #000080;
-            text-shadow: 1px 1px 0px #ffff00;
-            margin-bottom: 10px;
+            font-size: 1.8em;
+            font-weight: bold;
+            margin: 0;
+            text-shadow: 2px 2px 0px #000;
         }
         
-        .unit-question {
+        .unit-topic {
+            font-size: 1.1em;
+            margin: 5px 0 0 0;
             font-style: italic;
-            color: #000080;
-            font-weight: bold;
-            margin-bottom: 15px;
+        }
+        
+        .unit-content {
+            padding: 20px;
+            display: none;
+        }
+        
+        .unit.active .unit-content {
+            display: block;
+        }
+        
+        .expand-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            transition: transform 0.3s ease;
+        }
+        
+        .unit.active .expand-icon {
+            transform: translateY(-50%) rotate(45deg);
         }
         
         .project-box {
-            background: linear-gradient(135deg, #ff00ff, #00ffff);
-            color: #000;
+            background: #ffff00;
+            border: 2px solid #000;
             padding: 15px;
             margin: 15px 0;
+            box-shadow: 5px 5px 0px #ff00ff;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .skill-item {
+            background: #00ffff;
             border: 2px solid #000;
-            box-shadow: 3px 3px 0px #ffff00;
-        }
-        
-        .project-title {
-            font-family: 'VT323', monospace;
-            font-size: 1.3rem;
+            padding: 10px;
+            text-align: center;
             font-weight: bold;
-            margin-bottom: 10px;
         }
         
-        .step-list {
-            background: rgba(255, 255, 255, 0.9);
-            border: 1px solid #000;
-            padding: 15px;
-            margin: 10px 0;
+        .steps-list {
+            background: #f0f0f0;
+            border: 2px dashed #000;
+            padding: 20px;
+            margin: 15px 0;
+        }
+        
+        .steps-list h3 {
+            margin-top: 0;
+            text-decoration: underline;
         }
         
         .step {
             margin: 10px 0;
             padding: 10px;
-            background: rgba(255, 255, 0, 0.3);
-            border-left: 4px solid #ff00ff;
+            background: rgba(255, 255, 255, 0.8);
+            border-left: 5px solid #ff00ff;
         }
         
-        .step-number {
-            font-family: 'VT323', monospace;
-            font-size: 1.2rem;
-            color: #000080;
-            font-weight: bold;
-        }
-        
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .info-box {
-            background: rgba(0, 255, 255, 0.2);
-            border: 2px solid #00ffff;
+        .resources {
+            background: #e0e0e0;
+            border: 2px solid #000;
             padding: 15px;
-            box-shadow: 2px 2px 0px #ff00ff;
+            margin: 15px 0;
         }
         
-        .info-box h4 {
-            font-family: 'VT323', monospace;
-            font-size: 1.3rem;
-            color: #000080;
-            margin-bottom: 10px;
+        .locked-message {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.5em;
+            color: #666;
         }
         
-        .blink {
-            animation: blink 1s infinite;
-        }
-        
-        @keyframes blink {
-            0%, 50% { opacity: 1; }
-            51%, 100% { opacity: 0; }
-        }
-        
-        /* Scrolling text effect */
-        .marquee {
-            background: #000;
-            color: #00ff00;
-            padding: 10px;
-            margin: 20px 0;
-            overflow: hidden;
-            white-space: nowrap;
-            font-family: 'VT323', monospace;
-        }
-        
-        .marquee span {
+        .marquee-text {
             display: inline-block;
             animation: scroll 15s linear infinite;
         }
@@ -280,777 +186,384 @@
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
         }
-        
-        @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            .nav-buttons { flex-direction: column; align-items: center; }
-            .info-grid { grid-template-columns: 1fr; }
-        }
     </style>
-    <script>
-        function showSection(sectionId) {
-            // Hide all sections
-            const sections = document.querySelectorAll('.section');
-            sections.forEach(section => {
-                section.classList.remove('active');
-            });
-            
-            // Remove active class from all nav buttons
-            const navButtons = document.querySelectorAll('.nav-btn');
-            navButtons.forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Show selected section
-            document.getElementById(sectionId).classList.add('active');
-            
-            // Add active class to clicked button
-            event.target.classList.add('active');
-        }
-        
-        // Add admin function to unlock units
+</head>
 <body>
     <a href="https://www.cursors-4u.com/cursor/2011/11/29/naruto-uzumaki-waving-fan.html" target="_blank" title="Naruto Uzumaki Waving Fan"><img src="https://cur.cursors-4u.net/cursor.png" border="0" alt="Naruto Uzumaki Waving Fan" style="position:absolute; top: 0px; right: 0px;" /></a>
     
     <div class="container">
-        <header>
+        <div class="header">
             <h1>DIGITAL ART & NEW MEDIA</h1>
-            <div class="subtitle">Student Database v1.0</div>
+            <div class="subtitle">~* STUDENT DATABASE *~</div>
             <div class="marquee">
-                <span>Welcome to the future of digital creativity! • Navigate through units as they unlock • Ask questions • Create amazing art • Have fun! •</span>
+                <div class="marquee-text">Welcome to the digital realm! Click units to explore... Unlock new adventures as you progress...</div>
             </div>
-        </header>
-        
-        <!-- UNITS SECTION -->
-        <div id="units" class="section active">
-            <h2>COURSE UNITS <span class="blink">█</span></h2>
-            
-            <!-- UNIT 1 - UNLOCKED -->
-            <div class="unit" id="unit1">
-                <div class="unit-title">UNIT 1: Foundations and Digital Identity</div>
-                <div class="unit-question">How do artists establish their foundation and voice?</div>
+        </div>
+
+        <!-- Unit 1: Foundations and Digital Identity -->
+        <div class="unit active" id="unit1">
+            <div class="unit-header" onclick="toggleUnit('unit1')">
+                <div class="unit-title">Unit 1: Foundations and Digital Identity</div>
+                <div class="unit-topic">How do artists establish their foundation and voice?</div>
+                <div class="expand-icon">+</div>
+            </div>
+            <div class="unit-content">
                 <div class="project-box">
-                    <div class="project-title">MAJOR PROJECT: Digital Traced Self-Portrait</div>
-                    <p>Create a digital self-portrait that explores your artistic identity and establishes your digital workflow.</p>
+                    <h3>🎨 MAJOR PROJECT: Digital Traced Self-Portrait</h3>
+                    <p>Create a professional digital self-portrait that establishes your unique artistic identity and demonstrates mastery of digital tools.</p>
                 </div>
                 
-                <h3>Step-by-Step Process</h3>
-                <div class="step-list">
-                    <div class="step">
-                        <span class="step-number">STEP 1:</span> Wacom tablet introduction and interface navigation. Learn basic tools and pressure sensitivity settings.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 2:</span> Take reference self-portrait photo with proper lighting and composition.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 3:</span> Set up digital workspace and import reference image.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 4:</span> Begin digital tracing process, focusing on accurate proportions and basic shapes.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 5:</span> Apply digital rendering techniques including crosshatching, stippling, and blending.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 6:</span> Organize layers effectively for professional workflow.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 7:</span> Complete portrait with attention to detail and personal style.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 8:</span> Document your digital workflow process for portfolio.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 9:</span> Create a traditional comparison piece using same reference.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 10:</span> Write reflection on authenticity and digital vs traditional mark-making.
-                    </div>
+                <div class="skills-grid">
+                    <div class="skill-item">Pressure Sensitivity</div>
+                    <div class="skill-item">Digital Rendering</div>
+                    <div class="skill-item">Layer Management</div>
+                    <div class="skill-item">Digital Workflow</div>
                 </div>
                 
-                <div class="info-grid">
-                    <div class="info-box">
-                        <h4>Essential Skills</h4>
-                        <p>Pressure sensitivity, digital rendering, layer management, digital workflow</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Key Concepts</h4>
-                        <p>Digital drawing tools, tablet mastery, digital vs traditional techniques</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Materials</h4>
-                        <p>Wacom tablets, digital drawing software, reference photography</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Key Artists</h4>
-                        <p>David Hockney (digital painting), Petra Cortright, Casey Reas</p>
-                    </div>
+                <div class="steps-list">
+                    <h3>📋 STEP-BY-STEP PROCESS:</h3>
+                    <div class="step"><strong>Step 1:</strong> Wacom tablet introduction and interface navigation. Master basic tools and pressure sensitivity settings.</div>
+                    <div class="step"><strong>Step 2:</strong> Take reference self-portrait photo with proper lighting and composition. Begin digital tracing process.</div>
+                    <div class="step"><strong>Step 3:</strong> Complete portrait rendering using advanced digital techniques (crosshatching, stippling, blending). Organize layers professionally.</div>
+                    <div class="step"><strong>Step 4:</strong> Document your digital workflow. Create comparison study between traditional and digital techniques. Write authenticity reflection.</div>
+                </div>
+                
+                <div class="resources">
+                    <h3>🔗 KEY RESOURCES & ARTISTS:</h3>
+                    <p><strong>Featured Artists:</strong> David Hockney (digital painting), Petra Cortright, Casey Reas</p>
+                    <p><strong>Software:</strong> Photoshop, Procreate, or alternatives</p>
+                    <p><strong>Hardware:</strong> Wacom tablets, reference photography setup</p>
                 </div>
             </div>
-            
-            <!-- UNIT 2 - LOCKED -->
-            <div class="unit locked" id="unit2">
-                <div class="unit-title">UNIT 2: Digital Photography & Portfolio Setup</div>
-                <div class="unit-question">How do artists represent and interpret human experience?</div>
-                <div class="project-box">
-                    <div class="project-title">MAJOR PROJECT: Themed Photography Series + Portfolio Launch</div>
-                    <p>Develop a cohesive photography series and establish your professional web presence.</p>
-                </div>
-                
-                <h3>Step-by-Step Process</h3>
-                <div class="step-list">
-                    <div class="step">
-                        <span class="step-number">STEP 1:</span> Learn photography composition fundamentals (rule of thirds, leading lines).
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 2:</span> Develop theme for photography series based on personal interests.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 3:</span> Plan shooting schedule and location scouting.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 4:</span> Capture initial photos focusing on composition and lighting.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 5:</span> Set up Weebly website structure and navigation.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 6:</span> Continue photography series production (minimum 10 images).
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 7:</span> Edit photos using professional software (Lightroom/Photoshop).
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 8:</span> Integrate photos into website with proper sizing and formatting.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 9:</span> Optimize website for professional presentation.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 10:</span> Launch website and present series to class.
-                    </div>
-                </div>
-                
-                <div class="info-grid">
-                    <div class="info-box">
-                        <h4>Essential Skills</h4>
-                        <p>Digital photography composition, lighting, photo editing, professional web presence</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Key Concepts</h4>
-                        <p>Digital cameras, photo editing software, Weebly platform</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Materials</h4>
-                        <p>Photography composition guides, lighting manipulation, digital photo editing, website navigation design</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Key Artists</h4>
-                        <p>Gregory Crewdson, Cindy Sherman, Annie Leibovitz, Vivian Maier</p>
-                    </div>
+        </div>
+
+        <!-- Unit 2: Digital Photography & Portfolio Setup -->
+        <div class="unit locked" id="unit2">
+            <div class="unit-header" onclick="toggleUnit('unit2')">
+                <div class="unit-title">Unit 2: Digital Photography & Portfolio Setup</div>
+                <div class="unit-topic">How do artists represent and interpret human experience?</div>
+                <div class="expand-icon">🔒</div>
+            </div>
+            <div class="unit-content">
+                <div class="locked-message">
+                    Unit 2 will be unlocked when you're ready to begin!
                 </div>
             </div>
-            
-            <!-- UNIT 3 - LOCKED -->
-            <div class="unit locked" id="unit3">
-                <div class="unit-title">UNIT 3: Color Theory + Character Design</div>
-                <div class="unit-question">How do artists transform reality to communicate ideas?</div>
-                <div class="project-box">
-                    <div class="project-title">MAJOR PROJECT: "Meet the Artist" Poster with Artistic Avatar</div>
-                    <p>Design a character avatar and create a professional poster incorporating color theory principles.</p>
-                </div>
-                
-                <h3>Step-by-Step Process</h3>
-                <div class="step-list">
-                    <div class="step">
-                        <span class="step-number">STEP 1:</span> Study RGB/CMYK color systems and digital color theory.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 2:</span> Introduction to character design principles and avatar development.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 3:</span> Big Paper Planning integration - set artistic goals.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 4:</span> Sketch and develop character avatar concepts.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 5:</span> Create final character avatar using digital tools.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 6:</span> Design poster layout incorporating typography principles.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 7:</span> Apply color theory to enhance visual impact.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 8:</span> Integrate character and typography for cohesive design.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 9:</span> Refine and complete poster design.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 10:</span> Present work and reflect on goal-setting integration.
-                    </div>
-                </div>
-                
-                <div class="info-grid">
-                    <div class="info-box">
-                        <h4>Essential Skills</h4>
-                        <p>Digital color application, character development, poster design, typography</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Key Concepts</h4>
-                        <p>RGB/CMYK color systems, character design principles, personal goal-setting</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Materials</h4>
-                        <p>Digital design software, color management tools, design templates</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Key Artists</h4>
-                        <p>Peter Halley, Takashi Murakami, KAWS, contemporary character designers</p>
-                    </div>
+        </div>
+
+        <!-- Unit 3: Color Theory + Character Design -->
+        <div class="unit locked" id="unit3">
+            <div class="unit-header" onclick="toggleUnit('unit3')">
+                <div class="unit-title">Unit 3: Color Theory + Character Design</div>
+                <div class="unit-topic">How do artists transform reality to communicate ideas?</div>
+                <div class="expand-icon">🔒</div>
+            </div>
+            <div class="unit-content">
+                <div class="locked-message">
+                    Unit 3 awaits your creative journey!
                 </div>
             </div>
-            
-            <!-- UNIT 4 - LOCKED -->
-            <div class="unit locked" id="unit4">
-                <div class="unit-title">UNIT 4: Cultural Heritage & Design</div>
-                <div class="unit-question">How do artists preserve and celebrate cultural identity?</div>
-                <div class="project-box">
-                    <div class="project-title">MAJOR PROJECT: Cultural Food Box Design</div>
-                    <p>Design packaging for a cultural food item that celebrates heritage while demonstrating cultural sensitivity.</p>
-                </div>
-                
-                <h3>Step-by-Step Process</h3>
-                <div class="step-list">
-                    <div class="step">
-                        <span class="step-number">STEP 1:</span> Learn package design principles and industry standards.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 2:</span> Research cultural food traditions and significance.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 3:</span> Analyze cultural symbolism and sensitivity considerations.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 4:</span> Develop design concept that honors cultural heritage.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 5:</span> Create package template with proper measurements.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 6:</span> Design graphics incorporating cultural symbols respectfully.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 7:</span> Apply typography that complements cultural aesthetic.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 8:</span> Create 3D mockup for professional presentation.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 9:</span> Present design to class with cultural context explanation.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 10:</span> Write reflection on cultural sensitivity in design.
-                    </div>
-                </div>
-                
-                <div class="info-grid">
-                    <div class="info-box">
-                        <h4>Essential Skills</h4>
-                        <p>Template creation, typography, vector graphics, cultural research, 3D visualization</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Key Concepts</h4>
-                        <p>Package design principles, cultural symbolism, graphic design, mockup creation</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Materials</h4>
-                        <p>Digital design software, template tools, cultural research resources</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Key Artists</h4>
-                        <p>Paula Scher, Stefan Sagmeister, cultural package designers</p>
-                    </div>
+        </div>
+
+        <!-- Unit 4: Cultural Heritage & Design -->
+        <div class="unit locked" id="unit4">
+            <div class="unit-header" onclick="toggleUnit('unit4')">
+                <div class="unit-title">Unit 4: Cultural Heritage & Design</div>
+                <div class="unit-topic">How do artists preserve and celebrate cultural identity?</div>
+                <div class="expand-icon">🔒</div>
+            </div>
+            <div class="unit-content">
+                <div class="locked-message">
+                    Unit 4 - Discover cultural design traditions!
                 </div>
             </div>
-            
-            <!-- UNIT 5 - LOCKED -->
-            <div class="unit locked" id="unit5">
-                <div class="unit-title">UNIT 5: Process & Authenticity (MIGHT BE SKIPPED)</div>
-                <div class="unit-question">What makes artistic process authentic and meaningful?</div>
-                <div class="project-box">
-                    <div class="project-title">MAJOR PROJECT: AI Process vs. Human Process Comparison Study</div>
-                    <p>Compare and contrast AI-generated art with human creative process to explore authenticity.</p>
-                </div>
-                
-                <div class="info-grid">
-                    <div class="info-box">
-                        <h4>Essential Skills</h4>
-                        <p>Critical analysis, comparative methodology, documentation, reflection</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Key Concepts</h4>
-                        <p>Authenticity in art, AI collaboration, human creativity, artistic process</p>
-                    </div>
+        </div>
+
+        <!-- Unit 5: Process & Authenticity -->
+        <div class="unit locked" id="unit5">
+            <div class="unit-header" onclick="toggleUnit('unit5')">
+                <div class="unit-title">Unit 5: Process & Authenticity (Optional)</div>
+                <div class="unit-topic">What makes artistic process authentic and meaningful?</div>
+                <div class="expand-icon">🔒</div>
+            </div>
+            <div class="unit-content">
+                <div class="locked-message">
+                    Unit 5 - Explore authentic creation processes!
                 </div>
             </div>
-            
-            <!-- UNIT 6 - LOCKED -->
-            <div class="unit locked" id="unit6">
-                <div class="unit-title">UNIT 6: Animation</div>
-                <div class="unit-question">How do artists push boundaries and explore new possibilities?</div>
-                <div class="project-box">
-                    <div class="project-title">MAJOR PROJECT: Rotoscoping/Mixed Media Animation</div>
-                    <p>Create an animation that combines traditional and digital techniques using rotoscoping.</p>
-                </div>
-                
-                <h3>Step-by-Step Process</h3>
-                <div class="step-list">
-                    <div class="step">
-                        <span class="step-number">STEP 1:</span> Learn animation principles (timing, spacing, squash & stretch).
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 2:</span> Introduction to rotoscoping technique and applications.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 3:</span> Record reference video footage for animation.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 4:</span> Plan frame sequence and timing studies.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 5:</span> Begin frame-by-frame animation production.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 6:</span> Continue animation with focus on smooth motion.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 7:</span> Integrate mixed media elements (traditional/digital).
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 8:</span> Refine timing and add finishing touches.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 9:</span> Add sound considerations and final integration.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 10:</span> Present at animation festival and write reflection.
-                    </div>
-                </div>
-                
-                <div class="info-grid">
-                    <div class="info-box">
-                        <h4>Essential Skills</h4>
-                        <p>Frame-by-frame animation, timing and spacing, mixed media combination</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Key Concepts</h4>
-                        <p>Animation principles, rotoscoping techniques, traditional/digital integration</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Materials</h4>
-                        <p>Animation software, video recording equipment, traditional media for integration</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Key Artists</h4>
-                        <p>Don Hertzfeldt, Hayao Miyazaki, Bill Plympton, contemporary animators</p>
-                    </div>
+        </div>
+
+        <!-- Unit 6: Animation -->
+        <div class="unit locked" id="unit6">
+            <div class="unit-header" onclick="toggleUnit('unit6')">
+                <div class="unit-title">Unit 6: Animation</div>
+                <div class="unit-topic">How do artists push boundaries and explore new possibilities?</div>
+                <div class="expand-icon">🔒</div>
+            </div>
+            <div class="unit-content">
+                <div class="locked-message">
+                    Unit 6 - Bring your art to life with animation!
                 </div>
             </div>
-            
-            <!-- UNIT 7 - LOCKED -->
-            <div class="unit locked" id="unit7">
-                <div class="unit-title">UNIT 7: Digital Environments & Web Design</div>
-                <div class="unit-question">How do artists create innovative digital spaces?</div>
-                <div class="project-box">
-                    <div class="project-title">MAJOR PROJECT: Neocities Website Design - Internet as Place</div>
-                    <p>Create a website that explores the internet as a creative environment and digital space.</p>
-                </div>
-                
-                <h3>Step-by-Step Process</h3>
-                <div class="step-list">
-                    <div class="step">
-                        <span class="step-number">STEP 1:</span> Study "internet as place" concept and digital space theory.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 2:</span> Plan website concept and user experience design.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 3:</span> Create site mapping and navigation structure.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 4:</span> Begin website production using HTML/CSS.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 5:</span> Add interactive elements and responsive design.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 6:</span> Optimize user experience and accessibility.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 7:</span> Complete website with all functional elements.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 8:</span> Conduct user testing and gather feedback.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 9:</span> Make final refinements based on testing.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 10:</span> Present digital space concept and final website.
-                    </div>
-                </div>
-                
-                <div class="info-grid">
-                    <div class="info-box">
-                        <h4>Essential Skills</h4>
-                        <p>Digital space creation, interactive elements, Internet history research</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Key Concepts</h4>
-                        <p>Web design principles, internet as environment, digital spaces</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Materials</h4>
-                        <p>Neocities platform, simple coding resources, web development tools</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Key Artists</h4>
-                        <p>Jodi.org, Olia Lialina, Zach Lieberman, net artists</p>
-                    </div>
+        </div>
+
+        <!-- Unit 7: Digital Environments & Web Design -->
+        <div class="unit locked" id="unit7">
+            <div class="unit-header" onclick="toggleUnit('unit7')">
+                <div class="unit-title">Unit 7: Digital Environments & Web Design</div>
+                <div class="unit-topic">How do artists create innovative digital spaces?</div>
+                <div class="expand-icon">🔒</div>
+            </div>
+            <div class="unit-content">
+                <div class="locked-message">
+                    Unit 7 - Build the digital future!
                 </div>
             </div>
         </div>
     </div>
-            <h2>COURSE UNITS <span class="blink">█</span></h2>
+
+
+
+    <script>
+        function toggleUnit(unitId) {
+            const unit = document.getElementById(unitId);
+            if (unit.classList.contains('locked')) {
+                return; // Don't toggle locked units
+            }
+            unit.classList.toggle('active');
+        }
+
+        function unlockUnit(unitNumber) {
+            const unit = document.getElementById('unit' + unitNumber);
+            unit.classList.remove('locked');
             
-            <!-- UNIT 1 - UNLOCKED -->
-            <div class="unit" id="unit1">
-                <div class="unit-title">UNIT 1: Foundations and Digital Identity</div>
-                <div class="unit-question">How do artists establish their foundation and voice?</div>
-                <div class="project-box">
-                    <div class="project-title">MAJOR PROJECT: Digital Traced Self-Portrait</div>
-                    <p>Create a digital self-portrait that explores your artistic identity and establishes your digital workflow.</p>
-                </div>
-                
-                <h3>Step-by-Step Process</h3>
-                <div class="step-list">
-                    <div class="step">
-                        <span class="step-number">STEP 1:</span> Wacom tablet introduction and interface navigation. Learn basic tools and pressure sensitivity settings.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 2:</span> Take reference self-portrait photo with proper lighting and composition.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 3:</span> Set up digital workspace and import reference image.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 4:</span> Begin digital tracing process, focusing on accurate proportions and basic shapes.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 5:</span> Apply digital rendering techniques including crosshatching, stippling, and blending.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 6:</span> Organize layers effectively for professional workflow.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 7:</span> Complete portrait with attention to detail and personal style.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 8:</span> Document your digital workflow process for portfolio.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 9:</span> Create a traditional comparison piece using same reference.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 10:</span> Write reflection on authenticity and digital vs traditional mark-making.
-                    </div>
-                </div>
-                
-                <div class="info-grid">
-                    <div class="info-box">
-                        <h4>Essential Skills</h4>
-                        <p>Pressure sensitivity, digital rendering, layer management, digital workflow</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Key Concepts</h4>
-                        <p>Digital drawing tools, tablet mastery, digital vs traditional techniques</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Materials</h4>
-                        <p>Wacom tablets, digital drawing software, reference photography</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Key Artists</h4>
-                        <p>David Hockney (digital painting), Petra Cortright, Casey Reas</p>
-                    </div>
-                </div>
-            </div>
+            // Update the expand icon
+            const icon = unit.querySelector('.expand-icon');
+            icon.textContent = '+';
             
-            <!-- UNIT 2 - LOCKED -->
-            <div class="unit locked" id="unit2">
-                <div class="unit-title">UNIT 2: Digital Photography & Portfolio Setup</div>
-                <div class="unit-question">How do artists represent and interpret human experience?</div>
+            // Add content for each unit when unlocked
+            const content = unit.querySelector('.unit-content');
+            if (unitNumber === 2) {
+                content.innerHTML = generateUnit2Content();
+            } else if (unitNumber === 3) {
+                content.innerHTML = generateUnit3Content();
+            } else if (unitNumber === 4) {
+                content.innerHTML = generateUnit4Content();
+            } else if (unitNumber === 5) {
+                content.innerHTML = generateUnit5Content();
+            } else if (unitNumber === 6) {
+                content.innerHTML = generateUnit6Content();
+            } else if (unitNumber === 7) {
+                content.innerHTML = generateUnit7Content();
+            }
+        }
+
+        function lockAllUnits() {
+            for (let i = 2; i <= 7; i++) {
+                const unit = document.getElementById('unit' + i);
+                unit.classList.add('locked');
+                unit.classList.remove('active');
+                const icon = unit.querySelector('.expand-icon');
+                icon.textContent = '🔒';
+                const content = unit.querySelector('.unit-content');
+                content.innerHTML = '<div class="locked-message">This unit is currently locked!</div>';
+            }
+        }
+
+        function generateUnit2Content() {
+            return `
                 <div class="project-box">
-                    <div class="project-title">MAJOR PROJECT: Themed Photography Series + Portfolio Launch</div>
-                    <p>Develop a cohesive photography series and establish your professional web presence.</p>
+                    <h3>📸 MAJOR PROJECT: Themed Photography Series + Portfolio Launch</h3>
+                    <p>Create a cohesive photography series that explores human experience and launch your professional web presence.</p>
                 </div>
                 
-                <h3>Step-by-Step Process</h3>
-                <div class="step-list">
-                    <div class="step">
-                        <span class="step-number">STEP 1:</span> Learn photography composition fundamentals (rule of thirds, leading lines).
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 2:</span> Develop theme for photography series based on personal interests.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 3:</span> Plan shooting schedule and location scouting.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 4:</span> Capture initial photos focusing on composition and lighting.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 5:</span> Set up Weebly website structure and navigation.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 6:</span> Continue photography series production (minimum 10 images).
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 7:</span> Edit photos using professional software (Lightroom/Photoshop).
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 8:</span> Integrate photos into website with proper sizing and formatting.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 9:</span> Optimize website for professional presentation.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 10:</span> Launch website and present series to class.
-                    </div>
+                <div class="skills-grid">
+                    <div class="skill-item">Digital Photography</div>
+                    <div class="skill-item">Composition</div>
+                    <div class="skill-item">Lighting</div>
+                    <div class="skill-item">Photo Editing</div>
+                    <div class="skill-item">Web Presence</div>
                 </div>
                 
-                <div class="info-grid">
-                    <div class="info-box">
-                        <h4>Essential Skills</h4>
-                        <p>Digital photography composition, lighting, photo editing, professional web presence</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Key Concepts</h4>
-                        <p>Digital cameras, photo editing software, Weebly platform</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Materials</h4>
-                        <p>Photography composition guides, lighting manipulation, digital photo editing, website navigation design</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Key Artists</h4>
-                        <p>Gregory Crewdson, Cindy Sherman, Annie Leibovitz, Vivian Maier</p>
-                    </div>
+                <div class="steps-list">
+                    <h3>📋 STEP-BY-STEP PROCESS:</h3>
+                    <div class="step"><strong>Step 1:</strong> Master photography composition techniques (rule of thirds, leading lines) and develop your series theme.</div>
+                    <div class="step"><strong>Step 2:</strong> Shoot your photography series and begin Weebly website setup for portfolio presentation.</div>
+                    <div class="step"><strong>Step 3:</strong> Edit photos using professional techniques and integrate content into your website.</div>
+                    <div class="step"><strong>Step 4:</strong> Complete photography series and optimize website for professional presentation.</div>
+                    <div class="step"><strong>Step 5:</strong> Launch your professional portfolio with polished presentation and navigation.</div>
                 </div>
-            </div>
-            
-            <!-- UNIT 3 - LOCKED -->
-            <div class="unit locked" id="unit3">
-                <div class="unit-title">UNIT 3: Color Theory + Character Design</div>
-                <div class="unit-question">How do artists transform reality to communicate ideas?</div>
+                
+                <div class="resources">
+                    <h3>🔗 KEY RESOURCES & ARTISTS:</h3>
+                    <p><strong>Featured Artists:</strong> Gregory Crewdson, Cindy Sherman, Annie Leibovitz, Vivian Maier</p>
+                    <p><strong>Software:</strong> Lightroom, Photoshop, or alternatives</p>
+                    <p><strong>Platform:</strong> Weebly for portfolio creation</p>
+                </div>
+            `;
+        }
+
+        function generateUnit3Content() {
+            return `
                 <div class="project-box">
-                    <div class="project-title">MAJOR PROJECT: "Meet the Artist" Poster with Artistic Avatar</div>
-                    <p>Design a character avatar and create a professional poster incorporating color theory principles.</p>
+                    <h3>🎭 MAJOR PROJECT: "Meet the Artist" Poster with Artistic Avatar</h3>
+                    <p>Design a professional poster featuring your artistic avatar that demonstrates color theory mastery and personal goal-setting.</p>
                 </div>
                 
-                <h3>Step-by-Step Process</h3>
-                <div class="step-list">
-                    <div class="step">
-                        <span class="step-number">STEP 1:</span> Study RGB/CMYK color systems and digital color theory.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 2:</span> Introduction to character design principles and avatar development.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 3:</span> Big Paper Planning integration - set artistic goals.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 4:</span> Sketch and develop character avatar concepts.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 5:</span> Create final character avatar using digital tools.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 6:</span> Design poster layout incorporating typography principles.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 7:</span> Apply color theory to enhance visual impact.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 8:</span> Integrate character and typography for cohesive design.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 9:</span> Refine and complete poster design.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 10:</span> Present work and reflect on goal-setting integration.
-                    </div>
+                <div class="skills-grid">
+                    <div class="skill-item">Color Theory</div>
+                    <div class="skill-item">Character Design</div>
+                    <div class="skill-item">Poster Design</div>
+                    <div class="skill-item">Typography</div>
+                    <div class="skill-item">Goal Setting</div>
                 </div>
                 
-                <div class="info-grid">
-                    <div class="info-box">
-                        <h4>Essential Skills</h4>
-                        <p>Digital color application, character development, poster design, typography</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Key Concepts</h4>
-                        <p>RGB/CMYK color systems, character design principles, personal goal-setting</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Materials</h4>
-                        <p>Digital design software, color management tools, design templates</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Key Artists</h4>
-                        <p>Peter Halley, Takashi Murakami, KAWS, contemporary character designers</p>
-                    </div>
+                <div class="steps-list">
+                    <h3>📋 STEP-BY-STEP PROCESS:</h3>
+                    <div class="step"><strong>Step 1:</strong> Learn RGB/CMYK color systems and begin character design introduction for your artistic avatar.</div>
+                    <div class="step"><strong>Step 2:</strong> Integrate Big Paper Planning methodology with avatar development and personal artistic vision.</div>
+                    <div class="step"><strong>Step 3:</strong> Create poster design with professional typography and layout principles.</div>
+                    <div class="step"><strong>Step 4:</strong> Complete poster, present to class, and reflect on goal-setting integration.</div>
                 </div>
-            </div>
-            
-            <!-- UNIT 4 - LOCKED -->
-            <div class="unit locked" id="unit4">
-                <div class="unit-title">UNIT 4: Cultural Heritage & Design</div>
-                <div class="unit-question">How do artists preserve and celebrate cultural identity?</div>
+                
+                <div class="resources">
+                    <h3>🔗 KEY RESOURCES & ARTISTS:</h3>
+                    <p><strong>Featured Artists:</strong> Peter Halley, Takashi Murakami, KAWS, contemporary character designers</p>
+                    <p><strong>Concepts:</strong> RGB/CMYK technical guides, color management, Big Paper Planning methodology</p>
+                    <p><strong>Design:</strong> Character design tutorials, poster layout principles</p>
+                </div>
+            `;
+        }
+
+        function generateUnit4Content() {
+            return `
                 <div class="project-box">
-                    <div class="project-title">MAJOR PROJECT: Cultural Food Box Design</div>
-                    <p>Design packaging for a cultural food item that celebrates heritage while demonstrating cultural sensitivity.</p>
+                    <h3>📦 MAJOR PROJECT: Cultural Food Box Design</h3>
+                    <p>Create a culturally sensitive package design that celebrates heritage while demonstrating professional graphic design skills.</p>
                 </div>
                 
-                <h3>Step-by-Step Process</h3>
-                <div class="step-list">
-                    <div class="step">
-                        <span class="step-number">STEP 1:</span> Learn package design principles and industry standards.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 2:</span> Research cultural food traditions and significance.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 3:</span> Analyze cultural symbolism and sensitivity considerations.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 4:</span> Develop design concept that honors cultural heritage.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 5:</span> Create package template with proper measurements.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 6:</span> Design graphics incorporating cultural symbols respectfully.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 7:</span> Apply typography that complements cultural aesthetic.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 8:</span> Create 3D mockup for professional presentation.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 9:</span> Present design to class with cultural context explanation.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 10:</span> Write reflection on cultural sensitivity in design.
-                    </div>
+                <div class="skills-grid">
+                    <div class="skill-item">Package Design</div>
+                    <div class="skill-item">Cultural Research</div>
+                    <div class="skill-item">Typography</div>
+                    <div class="skill-item">Vector Graphics</div>
+                    <div class="skill-item">3D Visualization</div>
                 </div>
                 
-                <div class="info-grid">
-                    <div class="info-box">
-                        <h4>Essential Skills</h4>
-                        <p>Template creation, typography, vector graphics, cultural research, 3D visualization</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Key Concepts</h4>
-                        <p>Package design principles, cultural symbolism, graphic design, mockup creation</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Materials</h4>
-                        <p>Digital design software, template tools, cultural research resources</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Key Artists</h4>
-                        <p>Paula Scher, Stefan Sagmeister, cultural package designers</p>
-                    </div>
+                <div class="steps-list">
+                    <h3>📋 STEP-BY-STEP PROCESS:</h3>
+                    <div class="step"><strong>Step 1:</strong> Research package design principles and conduct cultural food tradition research.</div>
+                    <div class="step"><strong>Step 2:</strong> Analyze cultural symbolism and develop sensitivity-informed design approach.</div>
+                    <div class="step"><strong>Step 3:</strong> Create design templates and produce vector graphics with cultural symbol integration.</div>
+                    <div class="step"><strong>Step 4:</strong> Develop 3D mockup, present design, and complete cultural reflection assignment.</div>
                 </div>
-            </div>
-            
-            <!-- UNIT 5 - LOCKED -->
-            <div class="unit locked" id="unit5">
-                <div class="unit-title">UNIT 5: Process & Authenticity (MIGHT BE SKIPPED)</div>
-                <div class="unit-question">What makes artistic process authentic and meaningful?</div>
+                
+                <div class="resources">
+                    <h3>🔗 KEY RESOURCES & ARTISTS:</h3>
+                    <p><strong>Featured Artists:</strong> Paula Scher, Stefan Sagmeister, cultural package designers</p>
+                    <p><strong>Research:</strong> Food tradition databases, cultural sensitivity guides</p>
+                    <p><strong>Technical:</strong> Vector graphics tutorials, mockup creation tools</p>
+                </div>
+            `;
+        }
+
+        function generateUnit5Content() {
+            return `
                 <div class="project-box">
-                    <div class="project-title">MAJOR PROJECT: AI Process vs. Human Process Comparison Study</div>
-                    <p>Compare and contrast AI-generated art with human creative process to explore authenticity.</p>
+                    <h3>🤖 MAJOR PROJECT: AI Process vs. Human Process Comparison Study</h3>
+                    <p>Explore the intersection of artificial intelligence and human creativity through comparative analysis and reflection.</p>
                 </div>
                 
-                <div class="info-grid">
-                    <div class="info-box">
-                        <h4>Essential Skills</h4>
-                        <p>Critical analysis, comparative methodology, documentation, reflection</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Key Concepts</h4>
-                        <p>Authenticity in art, AI collaboration, human creativity, artistic process</p>
-                    </div>
+                <div class="skills-grid">
+                    <div class="skill-item">Process Analysis</div>
+                    <div class="skill-item">AI Collaboration</div>
+                    <div class="skill-item">Comparative Study</div>
+                    <div class="skill-item">Ethical Reasoning</div>
+                    <div class="skill-item">Documentation</div>
                 </div>
-            </div>
-            
-            <!-- UNIT 6 - LOCKED -->
-            <div class="unit locked" id="unit6">
-                <div class="unit-title">UNIT 6: Animation</div>
-                <div class="unit-question">How do artists push boundaries and explore new possibilities?</div>
+                
+                <div class="steps-list">
+                    <h3>📋 STEP-BY-STEP PROCESS:</h3>
+                    <div class="step"><strong>Step 1:</strong> Investigate AI-generated art processes and traditional human creative methods.</div>
+                    <div class="step"><strong>Step 2:</strong> Create parallel artworks using both AI assistance and purely human techniques.</div>
+                    <div class="step"><strong>Step 3:</strong> Document process differences, time investments, and creative decision-making.</div>
+                    <div class="step"><strong>Step 4:</strong> Analyze results and write comprehensive reflection on authenticity in digital art.</div>
+                    <div class="step"><strong>Step 5:</strong> Present findings and engage in class discussion about the future of human creativity.</div>
+                </div>
+                
+                <div class="resources">
+                    <h3>🔗 KEY RESOURCES & CONCEPTS:</h3>
+                    <p><strong>Ethics:</strong> AI collaboration guidelines, copyright considerations</p>
+                    <p><strong>Philosophy:</strong> Authenticity in art, human vs. machine creativity</p>
+                    <p><strong>Technical:</strong> AI art generation tools, process documentation methods</p>
+                </div>
+            `;
+        }
+
+        function generateUnit6Content() {
+            return `
                 <div class="project-box">
-                    <div class="project-title">MAJOR PROJECT: Rotoscoping/Mixed Media Animation</div>
-                    <p>Create an animation that combines traditional and digital techniques using rotoscoping.</p>
+                    <h3>🎬 MAJOR PROJECT: Rotoscoping/Mixed Media Animation</h3>
+                    <p>Create a dynamic animation that combines traditional and digital techniques, pushing the boundaries of visual storytelling.</p>
                 </div>
                 
-                <h3>Step-by-Step Process</h3>
-                <div class="step-list">
-                    <div class="step">
-                        <span class="step-number">STEP 1:</span> Learn animation principles (timing, spacing, squash & stretch).
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 2:</span> Introduction to rotoscoping technique and applications.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 3:</span> Record reference video footage for animation.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 4:</span> Plan frame sequence and timing studies.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 5:</span> Begin frame-by-frame animation production.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 6:</span> Continue animation with focus on smooth motion.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 7:</span> Integrate mixed media elements (traditional/digital).
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 8:</span> Refine timing and add finishing touches.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 9:</span> Add sound considerations and final integration.
-                    </div>
-                    <div class="step">
-                        <span class="step-number">STEP 10:</span> Present at animation festival and write reflection.
-                    </div>
+                <div class="skills-grid">
+                    <div class="skill-item">Frame Animation</div>
+                    <div class="skill-item">Timing & Spacing</div>
+                    <div class="skill-item">Rotoscoping</div>
+                    <div class="skill-item">Mixed Media</div>
+                    <div class="skill-item">Integration</div>
                 </div>
                 
-                <div class="info-grid">
-                    <div class="info-box">
-                        <h4>Essential Skills</h4>
-                        <p>Frame-by-frame animation, timing and spacing, mixed media combination</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Key Concepts</h4>
-                        <p>Animation principles, rotoscoping techniques, traditional/digital integration</p>
-                    </div>
-                    <div class="info-box">
-                        <h4>Materials</h4>
+                <div class="steps-list">
+                    <h3>📋 STEP-BY-STEP PROCESS:</h3>
+                    <div class="step"><strong>Step 1:</strong> Learn animation principles and introduction to rotoscoping techniques.</div>
+                    <div class="step"><strong>Step 2:</strong> Record reference video, plan frame sequences, and study timing principles.</div>
+                    <div class="step"><strong>Step 3-4:</strong> Produce animation using frame-by-frame techniques and integrate mixed media elements.</div>
+                    <div class="step"><strong>Step 5:</strong> Complete animation, add sound considerations, and prepare integration documentation.</div>
+                    <div class="step"><strong>Step 6:</strong> Present at animation festival showcase and complete reflection on process.</div>
+                </div>
+                
+                <div class="resources">
+                    <h3>🔗 KEY RESOURCES & ARTISTS:</h3>
+                    <p><strong>Featured Artists:</strong> Don Hertzfeldt, Hayao Miyazaki, Bill Plympton, contemporary animators</p>
+                    <p><strong>Software:</strong> After Effects, Procreate Dreams, or alternatives</p>
+                    <p><strong>Techniques:</strong> Animation principles videos, rotoscoping tutorials, mixed media integration</p>
+                </div>
+            `;
+        }
+
+        function generateUnit7Content() {
+            return `
+                <div class="project-box">
+                    <h3>🌐 MAJOR PROJECT: Neocities Website Design - Internet as Place</h3>
+                    <p>Design and code an innovative website that explores the concept of digital spaces and internet as environment.</p>
+                </div>
+                
+                <div class="skills-grid">
+                    <div class="skill-item">Web Design</div>
+                    <div class="skill-item">HTML/CSS</div>
+                    <div class="skill-item">User Experience</div>
+                    <div class="skill-item">Interactive Elements</div>
+                    <div class="skill-item">Digital Space Theory</div>
+                </div>
+                
+                <div class="steps-list">
+                    <h3>📋 STEP-BY-STEP PROCESS:</h3>
+                    <div class="step"><strong>Step 1:</strong> Explore "internet as place" concept and research digital space philosophy.</div>
+                    <div class="step"><strong>Step 2:</strong> Plan website structure, design user experience, and create site mapping.</div>
+                    <div class="step"><strong>Step 3:</strong> Build website using HTML/CSS and implement interactive elements.</div>
+                    <div class="step"><strong>Step 4:</strong> Complete site, conduct user testing, and present digital space concept.</div>
+                </div>
+                
+                <div class="resources">
+                    <h3>🔗 KEY RESOURCES & ARTISTS:</h3>
+                    <p><strong>Featured Artists:</strong> Jodi.org, Olia Lialina, Zach Lieberman, net artists</p>
+                    <p><strong>Platform:</strong> Neocities tutorials, internet art history</p>
+                    <p><strong>Concept:</strong> Digital space theory, internet as place philosophy</p>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
