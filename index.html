@@ -61,6 +61,7 @@
             display: inline-block;
         }
         
+
         .unit {
             border: 3px solid #000;
             margin: 20px 0;
@@ -163,6 +164,20 @@
             border-left: 5px solid #ff00ff;
         }
         
+        .vocab-section {
+            background: #e6f3ff;
+            border: 2px solid #000;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .vocab-term {
+            margin: 8px 0;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.7);
+            border-left: 3px solid #00ffff;
+        }
+        
         .resources {
             background: #e0e0e0;
             border: 2px solid #000;
@@ -175,6 +190,15 @@
             padding: 40px;
             font-size: 1.5em;
             color: #666;
+        }
+        
+        .marquee {
+            background: #000;
+            color: #00ff00;
+            padding: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+            white-space: nowrap;
         }
         
         .marquee-text {
@@ -200,129 +224,139 @@
             </div>
         </div>
 
-        <!-- Unit 1: Foundations and Digital Identity -->
-        <div class="unit active" id="unit1">
-            <div class="unit-header" onclick="toggleUnit('unit1')">
-                <div class="unit-title">Unit 1: Foundations and Digital Identity</div>
-                <div class="unit-topic">How do artists establish their foundation and voice?</div>
-                <div class="expand-icon">+</div>
+        <!-- Units Content -->
+            <!-- Unit 1: Foundations and Digital Identity -->
+            <div class="unit active" id="unit1">
+                <div class="unit-header" onclick="toggleUnit('unit1')">
+                    <div class="unit-title">Unit 1: Foundations and Digital Identity</div>
+                    <div class="unit-topic">How do artists establish their foundation and voice?</div>
+                    <div class="expand-icon">+</div>
+                </div>
+                <div class="unit-content">
+                    <div class="project-box">
+                        <h3>🎨 MAJOR PROJECT: Digital Traced Self-Portrait</h3>
+                        <p>Create a professional digital self-portrait that establishes your unique artistic identity and demonstrates mastery of digital tools.</p>
+                    </div>
+                    
+                    <div class="skills-grid">
+                        <div class="skill-item">Pressure Sensitivity</div>
+                        <div class="skill-item">Digital Rendering</div>
+                        <div class="skill-item">Layer Management</div>
+                        <div class="skill-item">Digital Workflow</div>
+                    </div>
+                    
+                    <div class="steps-list">
+                        <h3>📋 STEP-BY-STEP PROCESS:</h3>
+                        <div class="step"><strong>Step 1:</strong> Wacom tablet introduction and interface navigation. Master basic tools and pressure sensitivity settings.</div>
+                        <div class="step"><strong>Step 2:</strong> Take reference self-portrait photo with proper lighting and composition. Begin digital tracing process.</div>
+                        <div class="step"><strong>Step 3:</strong> Complete portrait rendering using advanced digital techniques (crosshatching, stippling, blending). Organize layers professionally.</div>
+                        <div class="step"><strong>Step 4:</strong> Document your digital workflow. Create comparison study between traditional and digital techniques. Write authenticity reflection.</div>
+                    </div>
+                    
+                    <div class="vocab-section">
+                        <h3>📚 VOCABULARY:</h3>
+                        <div class="vocab-term"><strong>Digital Rendering:</strong> The process of creating realistic images using computer software and digital techniques.</div>
+                        <div class="vocab-term"><strong>Layer Management:</strong> Organizing different elements of digital artwork on separate layers for better control and editing.</div>
+                        <div class="vocab-term"><strong>Pressure Sensitivity:</strong> A tablet feature that responds to how hard you press the stylus, affecting line thickness and opacity.</div>
+                        <div class="vocab-term"><strong>Digital Workflow:</strong> The systematic process and sequence of steps used to create digital artwork efficiently.</div>
+                        <div class="vocab-term"><strong>Crosshatching:</strong> A drawing technique using intersecting lines to create shadows and texture.</div>
+                        <div class="vocab-term"><strong>Stippling:</strong> A technique using dots to create texture and shading in artwork.</div>
+                    </div>
+                    
+                    <div class="resources">
+                        <h3>🔗 KEY RESOURCES & ARTISTS:</h3>
+                        <p><strong>Featured Artists:</strong> David Hockney (digital painting), Petra Cortright, Casey Reas</p>
+                        <p><strong>Software:</strong> Photoshop, Procreate, or alternatives</p>
+                        <p><strong>Hardware:</strong> Wacom tablets, reference photography setup</p>
+                    </div>
+                </div>
             </div>
-            <div class="unit-content">
-                <div class="project-box">
-                    <h3>🎨 MAJOR PROJECT: Digital Traced Self-Portrait</h3>
-                    <p>Create a professional digital self-portrait that establishes your unique artistic identity and demonstrates mastery of digital tools.</p>
-                </div>
-                
-                <div class="skills-grid">
-                    <div class="skill-item">Pressure Sensitivity</div>
-                    <div class="skill-item">Digital Rendering</div>
-                    <div class="skill-item">Layer Management</div>
-                    <div class="skill-item">Digital Workflow</div>
-                </div>
-                
-                <div class="steps-list">
-                    <h3>📋 STEP-BY-STEP PROCESS:</h3>
-                    <div class="step"><strong>Step 1:</strong> Wacom tablet introduction and interface navigation. Master basic tools and pressure sensitivity settings.</div>
-                    <div class="step"><strong>Step 2:</strong> Take reference self-portrait photo with proper lighting and composition. Begin digital tracing process.</div>
-                    <div class="step"><strong>Step 3:</strong> Complete portrait rendering using advanced digital techniques (crosshatching, stippling, blending). Organize layers professionally.</div>
-                    <div class="step"><strong>Step 4:</strong> Document your digital workflow. Create comparison study between traditional and digital techniques. Write authenticity reflection.</div>
-                </div>
-                
-                <div class="resources">
-                    <h3>🔗 KEY RESOURCES & ARTISTS:</h3>
-                    <p><strong>Featured Artists:</strong> David Hockney (digital painting), Petra Cortright, Casey Reas</p>
-                    <p><strong>Software:</strong> Photoshop, Procreate, or alternatives</p>
-                    <p><strong>Hardware:</strong> Wacom tablets, reference photography setup</p>
-                </div>
-            </div>
-        </div>
 
-        <!-- Unit 2: Digital Photography & Portfolio Setup -->
-        <div class="unit locked" id="unit2">
-            <div class="unit-header" onclick="toggleUnit('unit2')">
-                <div class="unit-title">Unit 2: Digital Photography & Portfolio Setup</div>
-                <div class="unit-topic">How do artists represent and interpret human experience?</div>
-                <div class="expand-icon">🔒</div>
-            </div>
-            <div class="unit-content">
-                <div class="locked-message">
-                    Unit 2 will be unlocked when you're ready to begin!
+            <!-- Unit 2: Digital Photography & Portfolio Setup -->
+            <div class="unit locked" id="unit2">
+                <div class="unit-header" onclick="toggleUnit('unit2')">
+                    <div class="unit-title">Unit 2: Digital Photography & Portfolio Setup</div>
+                    <div class="unit-topic">How do artists represent and interpret human experience?</div>
+                    <div class="expand-icon">🔒</div>
+                </div>
+                <div class="unit-content">
+                    <div class="locked-message">
+                        Unit 2 will be unlocked when you're ready to begin!
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Unit 3: Color Theory + Character Design -->
-        <div class="unit locked" id="unit3">
-            <div class="unit-header" onclick="toggleUnit('unit3')">
-                <div class="unit-title">Unit 3: Color Theory + Character Design</div>
-                <div class="unit-topic">How do artists transform reality to communicate ideas?</div>
-                <div class="expand-icon">🔒</div>
-            </div>
-            <div class="unit-content">
-                <div class="locked-message">
-                    Unit 3 awaits your creative journey!
+            <!-- Unit 3: Color Theory + Character Design -->
+            <div class="unit locked" id="unit3">
+                <div class="unit-header" onclick="toggleUnit('unit3')">
+                    <div class="unit-title">Unit 3: Color Theory + Character Design</div>
+                    <div class="unit-topic">How do artists transform reality to communicate ideas?</div>
+                    <div class="expand-icon">🔒</div>
+                </div>
+                <div class="unit-content">
+                    <div class="locked-message">
+                        Unit 3 awaits your creative journey!
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Unit 4: Cultural Heritage & Design -->
-        <div class="unit locked" id="unit4">
-            <div class="unit-header" onclick="toggleUnit('unit4')">
-                <div class="unit-title">Unit 4: Cultural Heritage & Design</div>
-                <div class="unit-topic">How do artists preserve and celebrate cultural identity?</div>
-                <div class="expand-icon">🔒</div>
-            </div>
-            <div class="unit-content">
-                <div class="locked-message">
-                    Unit 4 - Discover cultural design traditions!
+            <!-- Unit 4: Cultural Heritage & Design -->
+            <div class="unit locked" id="unit4">
+                <div class="unit-header" onclick="toggleUnit('unit4')">
+                    <div class="unit-title">Unit 4: Cultural Heritage & Design</div>
+                    <div class="unit-topic">How do artists preserve and celebrate cultural identity?</div>
+                    <div class="expand-icon">🔒</div>
+                </div>
+                <div class="unit-content">
+                    <div class="locked-message">
+                        Unit 4 - Discover cultural design traditions!
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Unit 5: Process & Authenticity -->
-        <div class="unit locked" id="unit5">
-            <div class="unit-header" onclick="toggleUnit('unit5')">
-                <div class="unit-title">Unit 5: Process & Authenticity (Optional)</div>
-                <div class="unit-topic">What makes artistic process authentic and meaningful?</div>
-                <div class="expand-icon">🔒</div>
-            </div>
-            <div class="unit-content">
-                <div class="locked-message">
-                    Unit 5 - Explore authentic creation processes!
+            <!-- Unit 5: Process & Authenticity -->
+            <div class="unit locked" id="unit5">
+                <div class="unit-header" onclick="toggleUnit('unit5')">
+                    <div class="unit-title">Unit 5: Process & Authenticity (Optional)</div>
+                    <div class="unit-topic">What makes artistic process authentic and meaningful?</div>
+                    <div class="expand-icon">🔒</div>
+                </div>
+                <div class="unit-content">
+                    <div class="locked-message">
+                        Unit 5 - Explore authentic creation processes!
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Unit 6: Animation -->
-        <div class="unit locked" id="unit6">
-            <div class="unit-header" onclick="toggleUnit('unit6')">
-                <div class="unit-title">Unit 6: Animation</div>
-                <div class="unit-topic">How do artists push boundaries and explore new possibilities?</div>
-                <div class="expand-icon">🔒</div>
-            </div>
-            <div class="unit-content">
-                <div class="locked-message">
-                    Unit 6 - Bring your art to life with animation!
+            <!-- Unit 6: Animation -->
+            <div class="unit locked" id="unit6">
+                <div class="unit-header" onclick="toggleUnit('unit6')">
+                    <div class="unit-title">Unit 6: Animation</div>
+                    <div class="unit-topic">How do artists push boundaries and explore new possibilities?</div>
+                    <div class="expand-icon">🔒</div>
+                </div>
+                <div class="unit-content">
+                    <div class="locked-message">
+                        Unit 6 - Bring your art to life with animation!
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Unit 7: Digital Environments & Web Design -->
-        <div class="unit locked" id="unit7">
-            <div class="unit-header" onclick="toggleUnit('unit7')">
-                <div class="unit-title">Unit 7: Digital Environments & Web Design</div>
-                <div class="unit-topic">How do artists create innovative digital spaces?</div>
-                <div class="expand-icon">🔒</div>
-            </div>
-            <div class="unit-content">
-                <div class="locked-message">
-                    Unit 7 - Build the digital future!
+            <!-- Unit 7: Digital Environments & Web Design -->
+            <div class="unit locked" id="unit7">
+                <div class="unit-header" onclick="toggleUnit('unit7')">
+                    <div class="unit-title">Unit 7: Digital Environments & Web Design</div>
+                    <div class="unit-topic">How do artists create innovative digital spaces?</div>
+                    <div class="expand-icon">🔒</div>
+                </div>
+                <div class="unit-content">
+                    <div class="locked-message">
+                        Unit 7 - Build the digital future!
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-
 
     <script>
         function toggleUnit(unitId) {
@@ -358,18 +392,6 @@
             }
         }
 
-        function lockAllUnits() {
-            for (let i = 2; i <= 7; i++) {
-                const unit = document.getElementById('unit' + i);
-                unit.classList.add('locked');
-                unit.classList.remove('active');
-                const icon = unit.querySelector('.expand-icon');
-                icon.textContent = '🔒';
-                const content = unit.querySelector('.unit-content');
-                content.innerHTML = '<div class="locked-message">This unit is currently locked!</div>';
-            }
-        }
-
         function generateUnit2Content() {
             return `
                 <div class="project-box">
@@ -392,6 +414,16 @@
                     <div class="step"><strong>Step 3:</strong> Edit photos using professional techniques and integrate content into your website.</div>
                     <div class="step"><strong>Step 4:</strong> Complete photography series and optimize website for professional presentation.</div>
                     <div class="step"><strong>Step 5:</strong> Launch your professional portfolio with polished presentation and navigation.</div>
+                </div>
+                
+                <div class="vocab-section">
+                    <h3>📚 VOCABULARY:</h3>
+                    <div class="vocab-term"><strong>Rule of Thirds:</strong> A composition technique dividing the frame into nine equal sections to create balanced, interesting images.</div>
+                    <div class="vocab-term"><strong>Leading Lines:</strong> Lines within a photo that lead the viewer's eye toward the main subject or focal point.</div>
+                    <div class="vocab-term"><strong>Depth of Field:</strong> The range of distance in a photo that appears acceptably sharp and in focus.</div>
+                    <div class="vocab-term"><strong>Aperture:</strong> The opening in a camera lens that controls how much light enters and affects depth of field.</div>
+                    <div class="vocab-term"><strong>White Balance:</strong> Adjusting colors in a photo to make them appear natural under different lighting conditions.</div>
+                    <div class="vocab-term"><strong>Portfolio:</strong> A curated collection of an artist's best work presented professionally online or in print.</div>
                 </div>
                 
                 <div class="resources">
@@ -426,6 +458,16 @@
                     <div class="step"><strong>Step 4:</strong> Complete poster, present to class, and reflect on goal-setting integration.</div>
                 </div>
                 
+                <div class="vocab-section">
+                    <h3>📚 VOCABULARY:</h3>
+                    <div class="vocab-term"><strong>RGB:</strong> Red, Green, Blue color model used for digital displays and screens.</div>
+                    <div class="vocab-term"><strong>CMYK:</strong> Cyan, Magenta, Yellow, Key (black) color model used for printing.</div>
+                    <div class="vocab-term"><strong>Color Harmony:</strong> Pleasing arrangements of colors based on their relationships on the color wheel.</div>
+                    <div class="vocab-term"><strong>Typography:</strong> The art and technique of arranging type to make written language readable and appealing.</div>
+                    <div class="vocab-term"><strong>Character Design:</strong> The process of creating unique visual representations of fictional characters.</div>
+                    <div class="vocab-term"><strong>Visual Hierarchy:</strong> The arrangement of elements to show their order of importance in a design.</div>
+                </div>
+                
                 <div class="resources">
                     <h3>🔗 KEY RESOURCES & ARTISTS:</h3>
                     <p><strong>Featured Artists:</strong> Peter Halley, Takashi Murakami, KAWS, contemporary character designers</p>
@@ -458,112 +500,10 @@
                     <div class="step"><strong>Step 4:</strong> Develop 3D mockup, present design, and complete cultural reflection assignment.</div>
                 </div>
                 
-                <div class="resources">
-                    <h3>🔗 KEY RESOURCES & ARTISTS:</h3>
-                    <p><strong>Featured Artists:</strong> Paula Scher, Stefan Sagmeister, cultural package designers</p>
-                    <p><strong>Research:</strong> Food tradition databases, cultural sensitivity guides</p>
-                    <p><strong>Technical:</strong> Vector graphics tutorials, mockup creation tools</p>
-                </div>
-            `;
-        }
-
-        function generateUnit5Content() {
-            return `
-                <div class="project-box">
-                    <h3>🤖 MAJOR PROJECT: AI Process vs. Human Process Comparison Study</h3>
-                    <p>Explore the intersection of artificial intelligence and human creativity through comparative analysis and reflection.</p>
-                </div>
-                
-                <div class="skills-grid">
-                    <div class="skill-item">Process Analysis</div>
-                    <div class="skill-item">AI Collaboration</div>
-                    <div class="skill-item">Comparative Study</div>
-                    <div class="skill-item">Ethical Reasoning</div>
-                    <div class="skill-item">Documentation</div>
-                </div>
-                
-                <div class="steps-list">
-                    <h3>📋 STEP-BY-STEP PROCESS:</h3>
-                    <div class="step"><strong>Step 1:</strong> Investigate AI-generated art processes and traditional human creative methods.</div>
-                    <div class="step"><strong>Step 2:</strong> Create parallel artworks using both AI assistance and purely human techniques.</div>
-                    <div class="step"><strong>Step 3:</strong> Document process differences, time investments, and creative decision-making.</div>
-                    <div class="step"><strong>Step 4:</strong> Analyze results and write comprehensive reflection on authenticity in digital art.</div>
-                    <div class="step"><strong>Step 5:</strong> Present findings and engage in class discussion about the future of human creativity.</div>
-                </div>
-                
-                <div class="resources">
-                    <h3>🔗 KEY RESOURCES & CONCEPTS:</h3>
-                    <p><strong>Ethics:</strong> AI collaboration guidelines, copyright considerations</p>
-                    <p><strong>Philosophy:</strong> Authenticity in art, human vs. machine creativity</p>
-                    <p><strong>Technical:</strong> AI art generation tools, process documentation methods</p>
-                </div>
-            `;
-        }
-
-        function generateUnit6Content() {
-            return `
-                <div class="project-box">
-                    <h3>🎬 MAJOR PROJECT: Rotoscoping/Mixed Media Animation</h3>
-                    <p>Create a dynamic animation that combines traditional and digital techniques, pushing the boundaries of visual storytelling.</p>
-                </div>
-                
-                <div class="skills-grid">
-                    <div class="skill-item">Frame Animation</div>
-                    <div class="skill-item">Timing & Spacing</div>
-                    <div class="skill-item">Rotoscoping</div>
-                    <div class="skill-item">Mixed Media</div>
-                    <div class="skill-item">Integration</div>
-                </div>
-                
-                <div class="steps-list">
-                    <h3>📋 STEP-BY-STEP PROCESS:</h3>
-                    <div class="step"><strong>Step 1:</strong> Learn animation principles and introduction to rotoscoping techniques.</div>
-                    <div class="step"><strong>Step 2:</strong> Record reference video, plan frame sequences, and study timing principles.</div>
-                    <div class="step"><strong>Step 3-4:</strong> Produce animation using frame-by-frame techniques and integrate mixed media elements.</div>
-                    <div class="step"><strong>Step 5:</strong> Complete animation, add sound considerations, and prepare integration documentation.</div>
-                    <div class="step"><strong>Step 6:</strong> Present at animation festival showcase and complete reflection on process.</div>
-                </div>
-                
-                <div class="resources">
-                    <h3>🔗 KEY RESOURCES & ARTISTS:</h3>
-                    <p><strong>Featured Artists:</strong> Don Hertzfeldt, Hayao Miyazaki, Bill Plympton, contemporary animators</p>
-                    <p><strong>Software:</strong> After Effects, Procreate Dreams, or alternatives</p>
-                    <p><strong>Techniques:</strong> Animation principles videos, rotoscoping tutorials, mixed media integration</p>
-                </div>
-            `;
-        }
-
-        function generateUnit7Content() {
-            return `
-                <div class="project-box">
-                    <h3>🌐 MAJOR PROJECT: Neocities Website Design - Internet as Place</h3>
-                    <p>Design and code an innovative website that explores the concept of digital spaces and internet as environment.</p>
-                </div>
-                
-                <div class="skills-grid">
-                    <div class="skill-item">Web Design</div>
-                    <div class="skill-item">HTML/CSS</div>
-                    <div class="skill-item">User Experience</div>
-                    <div class="skill-item">Interactive Elements</div>
-                    <div class="skill-item">Digital Space Theory</div>
-                </div>
-                
-                <div class="steps-list">
-                    <h3>📋 STEP-BY-STEP PROCESS:</h3>
-                    <div class="step"><strong>Step 1:</strong> Explore "internet as place" concept and research digital space philosophy.</div>
-                    <div class="step"><strong>Step 2:</strong> Plan website structure, design user experience, and create site mapping.</div>
-                    <div class="step"><strong>Step 3:</strong> Build website using HTML/CSS and implement interactive elements.</div>
-                    <div class="step"><strong>Step 4:</strong> Complete site, conduct user testing, and present digital space concept.</div>
-                </div>
-                
-                <div class="resources">
-                    <h3>🔗 KEY RESOURCES & ARTISTS:</h3>
-                    <p><strong>Featured Artists:</strong> Jodi.org, Olia Lialina, Zach Lieberman, net artists</p>
-                    <p><strong>Platform:</strong> Neocities tutorials, internet art history</p>
-                    <p><strong>Concept:</strong> Digital space theory, internet as place philosophy</p>
-                </div>
-            `;
-        }
-    </script>
-</body>
-</html>
+                <div class="vocab-section">
+                    <h3>📚 VOCABULARY:</h3>
+                    <div class="vocab-term"><strong>Vector Graphics:</strong> Digital images created using mathematical equations, allowing infinite scalability without quality loss.</div>
+                    <div class="vocab-term"><strong>Cultural Appropriation:</strong> The inappropriate adoption of elements from one culture by members of a different cultural group.</div>
+                    <div class="vocab-term"><strong>Brand Identity:</strong> The visual elements that represent and distinguish a brand or product.</div>
+                    <div class="vocab-term"><strong>Mockup:</strong> A realistic visual representation showing how a design will look in real-world application.</div>
+                    <div class="vocab-term"><strong
