@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Spaces WebQuest</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', serif;
+            background: #E6E6FA url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23E6E6FA"/><circle cx="50" cy="50" r="2" fill="%23DDA0DD" opacity="0.3"/></svg>') repeat;
+            margin: 0;
+            padding: 20px;
+            color: #333366;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border: 3px solid #9966CC;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .header {
+            background: linear-gradient(to bottom, #9966CC, #663399);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-bottom: 5px solid #663399;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .header .subtitle {
+            font-size: 1.2em;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .quest-intro {
+            background: #F0F8FF;
+            border: 2px dashed #4169E1;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+        }
+
+        .quest-intro h3 {
+            color: #4169E1;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .navigation {
+            background: #FFE4E1;
+            border: 2px solid #CD5C5C;
+            margin: 20px;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .navigation h3 {
+            color: #8B0000;
+            margin-bottom: 15px;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nav-link {
+            background: #FF6347;
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border: 2px outset #FF6347;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .nav-link:hover {
+            background: #CD5C5C;
+            border: 2px inset #CD5C5C;
+        }
+
+        .slideshow-box {
+            background: #FFFACD;
+            border: 3px double #DAA520;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        .slideshow-box h3 {
+            color: #B8860B;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            text-decoration: underline;
+        }
+
+        .slideshow-requirements {
+            background: #F5F5DC;
+            border: 1px solid #DDD;
+            padding: 15px;
+            margin: 10px 0;
+        }
+
+        .slideshow-requirements ul {
+            margin-left: 25px;
+        }
+
+        .slideshow-requirements li {
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        .week-section {
+            margin: 30px 20px;
+            border: 3px ridge #9966CC;
+            background: #F8F8FF;
+        }
+
+        .week-header {
+            background: linear-gradient(to right, #9966CC, #8A2BE2);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 3px solid #663399;
+        }
+
+        .week-header h2 {
+            font-size: 1.6em;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            margin: 0;
+        }
+
+        .lesson-container {
+            padding: 20px;
+        }
+
+        .lesson {
+            background: white;
+            border: 2px solid #9966CC;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
+        }
+
+        .lesson-header {
+            background: linear-gradient(to right, #DDA0DD, #DA70D6);
+            padding: 15px;
+            border-bottom: 2px solid #9966CC;
+            display: flex;
+            align-items: center;
+        }
+
+        .lesson-number {
+            background: #663399;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-right: 15px;
+            border: 2px outset #663399;
+        }
+
+        .lesson-title {
+            font-size: 1.2em;
+            color: #4B0082;
+            font-weight: bold;
+        }
+
+        .lesson-content {
+            padding: 20px;
+        }
+
+        .objective {
+            background: #E6E6FA;
+            border-left: 5px solid #9966CC;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .objective h4 {
+            color: #4B0082;
+            margin-bottom: 10px;
+        }
+
+        .research-sites {
+            background: #F0FFFF;
+            border: 2px dashed #20B2AA;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .research-sites h4 {
+            color: #008B8B;
+            margin-bottom: 15px;
+            text-decoration: underline;
+        }
+
+        .site-link {
+            display: block;
+            background: #E0FFFF;
+            border: 1px solid #20B2AA;
+            padding: 10px;
+            margin-bottom: 8px;
+            text-decoration: none;
+            color: #006666;
+            font-weight: bold;
+            border-radius: 3px;
+        }
+
+        .site-link:hover {
+            background: #B0E0E6;
+            border: 1px solid #4682B4;
+        }
+
+        .checklist {
+            background: #F0FFF0;
+            border: 2px solid #32CD32;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .checklist h4 {
+            color: #228B22;
+            margin-bottom: 15px;
+            text-decoration: underline;
+        }
+
+        .checklist-item {
+            margin-bottom: 10px;
+            padding: 8px;
+            background: #HONEYDEW;
+            border: 1px dotted #32CD32;
+        }
+
+        .checklist-item input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.3);
+        }
+
+        .checklist-item label {
+            font-weight: bold;
+            color: #006400;
+        }
+
+        .for-slideshow {
+            background: #FFE4B5;
+            border: 3px double #FF8C00;
+            padding: 12px;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .for-slideshow h5 {
+            color: #FF6600;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .for-slideshow p {
+            color: #CC4400;
+            font-weight: bold;
+            font-style: italic;
+        }
+
+        .step-by-step {
+            background: #FFF8DC;
+            border: 2px solid #DAA520;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .step-by-step h4 {
+            color: #B8860B;
+            margin-bottom: 15px;
+            text-decoration: underline;
+        }
+
+        .step {
+            background: #FFFAF0;
+            border-left: 4px solid #DAA520;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .step-number {
+            background: #FF8C00;
+            color: white;
+            display: inline-block;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 25px;
+            font-weight: bold;
+            margin-right: 10px;
+            border: 1px outset #FF8C00;
+        }
+
+        .warning {
+            background: #FFE4E1;
+            border: 2px solid #DC143C;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .warning h5 {
+            color: #DC143C;
+            margin-bottom: 8px;
+        }
+
+        .tip {
+            background: #F0F8FF;
+            border: 2px dashed #4169E1;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .tip h5 {
+            color: #4169E1;
+            margin-bottom: 8px;
+        }
+
+        .progress-tracker {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #FFFACD;
+            border: 2px solid #DAA520;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+            font-family: 'Times New Roman', serif;
+            max-width: 150px;
+        }
+
+        .progress-tracker h4 {
+            color: #B8860B;
+            margin-bottom: 10px;
+            font-size: 1em;
+            text-align: center;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #F5F5DC;
+            border: 1px inset #DDD;
+            margin: 8px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(to right, #32CD32, #228B22);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .celebration {
+            background: linear-gradient(45deg, #FF69B4, #FF1493);
+            color: white;
+            padding: 30px;
+            margin: 30px 20px;
+            text-align: center;
+            border: 5px double #FF69B4;
+            border-radius: 15px;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .celebration h2 {
+            font-size: 2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+            }
+            
+            .progress-tracker {
+                position: static;
+                margin: 20px auto;
+                width: 90%;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="progress-tracker">
+            <h4>Your Progress</h4>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div id="progressText">0 / 15 Lessons</div>
+        </div>
+
+        <div class="header">
+            <h1>🌐 Digital Spaces WebQuest</h1>
+            <p class="subtitle">Building Your Authentic Corner of the Internet</p>
+            <p><em>A 15-Lesson Journey from Research to Creation</em></p>
+        </div>
+
+        <div class="quest-intro">
+            <h3>🎯 Your Mission</h3>
+            <p>You're about to embark on a quest to create your very own authentic digital space! This isn't just about building a website - you're learning to express yourself genuinely online, understanding how the internet can be a place for creativity and connection, and documenting your creative journey as both an artist and an engineer.</p>
+        </div>
+
+        <div class="navigation">
+            <h3>🗺️ Quest Navigation</h3>
+            <div class="nav-links">
+                <a href="#part1" class="nav-link">Part 1: Research</a>
+                <a href="#part2" class="nav-link">Part 2: Planning</a>
+                <a href="#part3" class="nav-link">Part 3: Building</a>
+                <a href="#part4" class="nav-link">Part 4: Enhancement</a>
+                <a href="#slideshow" class="nav-link">Final Project</a>
+            </div>
+        </div>
+
+        <div class="slideshow-box" id="slideshow">
+            <h3>📊 MAJOR ASSESSMENT: Project Slideshow</h3>
+            <div class="slideshow-requirements">
+                <p><strong>Your final slideshow MUST include documentation from every lesson below. This webquest IS your research and process documentation!</strong></p>
+                
+                <h4>Required Slideshow Components:</h4>
+                <ul>
+                    <li><strong>Title Slide:</strong> Your name, site URL, project title</li>
+                    <li><strong>Research Documentation:</strong> Screenshots and analysis from Lessons 2-3</li>
+                    <li><strong>Design Process:</strong> Planning materials from Lessons 4-5</li>
+                    <li><strong>Technical Journey:</strong> Before/after screenshots showing your building process</li>
+                    <li><strong>Final Site Tour:</strong> Screenshots of all three pages with explanations</li>
+                    <li><strong>Reflection:</strong> What you learned about authentic digital expression</li>
+                    <li><strong>Creative Choices:</strong> Explanation of design decisions and why they represent you</li>
+                </ul>
+                
+                <div class="for-slideshow">
+                    <h5>📷 DOCUMENT EVERYTHING!</h5>
+                    <p>Take screenshots, save your work, and reflect as you go. Your slideshow tells the story of your creative journey!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PART 1: RESEARCH & FOUNDATION -->
+        <div class="week-section" id="part1">
+            <div class="week-header">
+                <h2>📚 PART 1: Research & Foundation</h2>
+                <p><em>Understanding "Internet as Place" & Authentic Digital Expression</em></p>
+            </div>
+            
+            <div class="lesson-container">
+                <!-- Lesson 1 -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <div class="lesson-number">1</div>
+                        <div class="lesson-title">What is "Internet as Place"?</div>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="objective">
+                            <h4>🎯 Today's Goal:</h4>
+                            <p>Understand how websites can be personal spaces that reflect who you are, just like decorating your bedroom.</p>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Complete These Tasks:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson1-1">
+                                <label for="lesson1-1">Draw your bedroom from above, label 3 personality elements</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson1-2">
+                                <label for="lesson1-2">Complete "Digital Space Reflection" worksheet</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson1-3">
+                                <label for="lesson1-3">Explore 3 example websites provided by teacher</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson1-4">
+                                <label for="lesson1-4">Write one word describing your ideal digital space feeling</label>
+                            </div>
+                        </div>
+
+                        <div class="for-slideshow">
+                            <h5>📊 For Your Slideshow:</h5>
+                            <p>Save your bedroom drawing and reflection answers - these show your initial thinking!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lesson 2 -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <div class="lesson-number">2</div>
+                        <div class="lesson-title">Research Day 1: Site Analysis</div>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="objective">
+                            <h4>🎯 Today's Goal:</h4>
+                            <p>Analyze personal websites to understand how people create authentic digital spaces.</p>
+                        </div>
+
+                        <div class="research-sites">
+                            <h4>🔍 Required Research Sites:</h4>
+                            <a href="https://laurelschwulst.com/e/my-website-is-a-shifting-house/" target="_blank" class="site-link">
+                                📖 Laurel Schwulst - "My Website is a Shifting House"
+                            </a>
+                            <a href="https://art.teleportacia.org/" target="_blank" class="site-link">
+                                🎨 Olia Lialina - Teleportacia (Net Art Pioneer)
+                            </a>
+                            <a href="https://www.are.na/" target="_blank" class="site-link">
+                                🧠 Are.na - Collaborative Research Platform
+                            </a>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ For Each Site, Document:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson2-1">
+                                <label for="lesson2-1">Take screenshot of homepage</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson2-2">
+                                <label for="lesson2-2">Write 3 words describing the "vibe"</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson2-3">
+                                <label for="lesson2-3">Identify what makes it feel authentic/personal</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson2-4">
+                                <label for="lesson2-4">Note one element you might want to try</label>
+                            </div>
+                        </div>
+
+                        <div class="for-slideshow">
+                            <h5>📊 For Your Slideshow:</h5>
+                            <p>Create a "Research Inspiration" slide with your screenshots and analysis notes!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lesson 3 -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <div class="lesson-number">3</div>
+                        <div class="lesson-title">Research Day 2: Historical Context</div>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="objective">
+                            <h4>🎯 Today's Goal:</h4>
+                            <p>Explore how web culture has evolved and understand "digital archaeology."</p>
+                        </div>
+
+                        <div class="research-sites">
+                            <h4>🏛️ Digital Archaeology Sites:</h4>
+                            <a href="https://oldwebimages.online/daily.html" target="_blank" class="site-link">
+                                📼 Old Web Images Daily - Nostalgic Web Archive
+                            </a>
+                            <a href="https://gossipsweb.net/" target="_blank" class="site-link">
+                                💬 Gossips Web - Community-Driven Web Culture
+                            </a>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Research Tasks:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson3-1">
+                                <label for="lesson3-1">Browse 10 different archived sites on Old Web Images</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson3-2">
+                                <label for="lesson3-2">Note patterns in old vs. modern web design</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson3-3">
+                                <label for="lesson3-3">Explore Gossips Web community approach</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson3-4">
+                                <label for="lesson3-4">Write reflection: What did early web prioritize vs. social media?</label>
+                            </div>
+                        </div>
+
+                        <div class="for-slideshow">
+                            <h5>📊 For Your Slideshow:</h5>
+                            <p>Add a "Web Evolution" slide comparing old vs. modern approaches to personal expression online!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lesson 4 -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <div class="lesson-number">4</div>
+                        <div class="lesson-title">Content Planning Workshop</div>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="objective">
+                            <h4>🎯 Today's Goal:</h4>
+                            <p>Plan authentic content for your three-page website structure.</p>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Homepage Planning:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson4-1">
+                                <label for="lesson4-1">Write welcome message (2-3 sentences in YOUR voice)</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson4-2">
+                                <label for="lesson4-2">Describe current obsession/what you're into right now</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson4-3">
+                                <label for="lesson4-3">Plan 3 "mood" elements (images, quotes, interests)</label>
+                            </div>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ About Page Planning:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson4-4">
+                                <label for="lesson4-4">Write your story (focus on what's interesting NOW)</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson4-5">
+                                <label for="lesson4-5">List 3 fun facts that aren't basic</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson4-6">
+                                <label for="lesson4-6">Identify 2-3 values that actually matter to you</label>
+                            </div>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Projects Page Planning:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson4-7">
+                                <label for="lesson4-7">Plan 1 engineering project documentation</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson4-8">
+                                <label for="lesson4-8">Plan 1 creative project showcase</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson4-9">
+                                <label for="lesson4-9">List 1 "currently learning" item</label>
+                            </div>
+                        </div>
+
+                        <div class="for-slideshow">
+                            <h5>📊 For Your Slideshow:</h5>
+                            <p>Screenshot your content planning - this shows your design process and authentic voice development!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lesson 5 -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <div class="lesson-number">5</div>
+                        <div class="lesson-title">Template Selection & File Prep</div>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="objective">
+                            <h4>🎯 Today's Goal:</h4>
+                            <p>Choose your website foundation and prepare all materials for building.</p>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Template Selection:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson5-1">
+                                <label for="lesson5-1">Choose template that fits your content plan</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson5-2">
+                                <label for="lesson5-2">Download template files to computer</label>
+                            </div>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Image Preparation:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson5-3">
+                                <label for="lesson5-3">Select 5 best photos that represent you</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson5-4">
+                                <label for="lesson5-4">Rename files: profile.jpg, mood1.jpg, mood2.jpg, etc.</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson5-5">
+                                <label for="lesson5-5">Resize images if needed</label>
+                            </div>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Content Finalization:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson5-6">
+                                <label for="lesson5-6">Type all written content into planning template</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson5-7">
+                                <label for="lesson5-7">Proofread for authenticity and voice</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson5-8">
+                                <label for="lesson5-8">Verify all materials ready for building</label>
+                            </div>
+                        </div>
+
+                        <div class="for-slideshow">
+                            <h5>📊 For Your Slideshow:</h5>
+                            <p>Document your template choice and reasoning - why does this foundation fit your vision?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PART 2: PLANNING & PREPARATION -->
+        <div class="week-section" id="part2">
+            <div class="week-header">
+                <h2>🎯 PART 2: Planning & Preparation</h2>
+                <p><em>Content Development & Material Preparation</em></p>
+            </div>
+            
+            <div class="lesson-container">
+                <!-- Lesson 4 -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <div class="lesson-number">4</div>
+                        <div class="lesson-title">Content Planning Workshop</div>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="objective">
+                            <h4>🎯 Today's Goal:</h4>
+                            <p>Plan authentic content for your three-page website structure.</p>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Homepage Planning:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson4-1">
+                                <label for="lesson4-1">Write welcome message (2-3 sentences in YOUR voice)</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson4-2">
+                                <label for="lesson4-2">Describe current obsession/what you're into right now</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson4-3">
+                                <label for="lesson4-3">Plan 3 "mood" elements (images, quotes, interests)</label>
+                            </div>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ About Page Planning:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson4-4">
+                                <label for="lesson4-4">Write your story (focus on what's interesting NOW)</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson4-5">
+                                <label for="lesson4-5">List 3 fun facts that aren't basic</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson4-6">
+                                <label for="lesson4-6">Identify 2-3 values that actually matter to you</label>
+                            </div>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Projects Page Planning:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson4-7">
+                                <label for="lesson4-7">Plan 1 engineering project documentation</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson4-8">
+                                <label for="lesson4-8">Plan 1 creative project showcase</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson4-9">
+                                <label for="lesson4-9">List 1 "currently learning" item</label>
+                            </div>
+                        </div>
+
+                        <div class="for-slideshow">
+                            <h5>📊 For Your Slideshow:</h5>
+                            <p>Screenshot your content planning - this shows your design process and authentic voice development!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lesson 5 -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <div class="lesson-number">5</div>
+                        <div class="lesson-title">Template Selection & File Prep</div>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="objective">
+                            <h4>🎯 Today's Goal:</h4>
+                            <p>Choose your website foundation and prepare all materials for building.</p>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Template Selection:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson5-1">
+                                <label for="lesson5-1">Choose template that fits your content plan</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson5-2">
+                                <label for="lesson5-2">Download template files to computer</label>
+                            </div>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Image Preparation:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson5-3">
+                                <label for="lesson5-3">Select 5 best photos that represent you</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson5-4">
+                                <label for="lesson5-4">Rename files: profile.jpg, mood1.jpg, mood2.jpg, etc.</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson5-5">
+                                <label for="lesson5-5">Resize images if needed</label>
+                            </div>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Content Finalization:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson5-6">
+                                <label for="lesson5-6">Type all written content into planning template</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson5-7">
+                                <label for="lesson5-7">Proofread for authenticity and voice</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson5-8">
+                                <label for="lesson5-8">Verify all materials ready for building</label>
+                            </div>
+                        </div>
+
+                        <div class="for-slideshow">
+                            <h5>📊 For Your Slideshow:</h5>
+                            <p>Document your template choice and reasoning - why does this foundation fit your vision?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PART 3: TECHNICAL BUILDING -->
+        <div class="week-section" id="part3">
+            <div class="week-header">
+                <h2>🛠️ PART 3: Technical Building</h2>
+                <p><em>From Setup to Complete Three-Page Website</em></p>
+            </div>
+            
+            <div class="lesson-container">
+                <!-- Lesson 6 -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <div class="lesson-number">6</div>
+                        <div class="lesson-title">Neocities Account & Platform Setup</div>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="objective">
+                            <h4>🎯 Today's Goal:</h4>
+                            <p>Create your Neocities account and understand the platform basics.</p>
+                        </div>
+
+                        <div class="step-by-step">
+                            <h4>🚀 Step-by-Step Account Setup:</h4>
+                            <div class="step">
+                                <span class="step-number">1</span>
+                                Go to <strong>neocities.org</strong> and click "Create Site"
+                            </div>
+                            <div class="step">
+                                <span class="step-number">2</span>
+                                Choose username (get teacher approval - this becomes yourname.neocities.org)
+                            </div>
+                            <div class="step">
+                                <span class="step-number">3</span>
+                                Use school email address and create secure password
+                            </div>
+                            <div class="step">
+                                <span class="step-number">4</span>
+                                Navigate to dashboard and find file manager ("Edit" button)
+                            </div>
+                            <div class="step">
+                                <span class="step-number">5</span>
+                                Test your site URL: yourname.neocities.org
+                            </div>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Verification Checklist:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson6-1">
+                                <label for="lesson6-1">Neocities account created with school email</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson6-2">
+                                <label for="lesson6-2">Username chosen and approved (write it down!)</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson6-3">
+                                <label for="lesson6-3">Dashboard explored and file manager opened</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson6-4">
+                                <label for="lesson6-4">Site URL tested (yourname.neocities.org works)</label>
+                            </div>
+                        </div>
+
+                        <div class="for-slideshow">
+                            <h5>📊 For Your Slideshow:</h5>
+                            <p>Screenshot your new Neocities dashboard and write down your site URL!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lesson 7 -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <div class="lesson-number">7</div>
+                        <div class="lesson-title">Template Installation</div>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="objective">
+                            <h4>🎯 Today's Goal:</h4>
+                            <p>Install your chosen template and make your first customizations.</p>
+                        </div>
+
+                        <div class="step-by-step">
+                            <h4>📁 Template Installation Steps:</h4>
+                            <div class="step">
+                                <span class="step-number">1</span>
+                                Open Neocities file manager
+                            </div>
+                            <div class="step">
+                                <span class="step-number">2</span>
+                                Delete the default index.html file
+                            </div>
+                            <div class="step">
+                                <span class="step-number">3</span>
+                                Upload your chosen template's index.html
+                            </div>
+                            <div class="step">
+                                <span class="step-number">4</span>
+                                Refresh your site URL to see template
+                            </div>
+                            <div class="step">
+                                <span class="step-number">5</span>
+                                Edit index.html and look for the text <strong>"YOUR NAME HERE"</strong> - replace it with your actual name
+                            </div>
+                        </div>
+
+                        <div class="warning">
+                            <h5>⚠️ Important:</h5>
+                            <p>Make sure to delete the original index.html before uploading your template, or it won't show up!</p>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Installation Checklist:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson7-1">
+                                <label for="lesson7-1">Template uploaded successfully</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson7-2">
+                                <label for="lesson7-2">Site loads with new template</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson7-3">
+                                <label for="lesson7-3">Name replaced and visible on site</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson7-4">
+                                <label for="lesson7-4">Template styling works correctly</label>
+                            </div>
+                        </div>
+
+                        <div class="for-slideshow">
+                            <h5>📊 For Your Slideshow:</h5>
+                            <p>Take a "before" screenshot of the default template and "after" with your name!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lesson 8 -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <div class="lesson-number">8</div>
+                        <div class="lesson-title">Homepage Content Integration</div>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="objective">
+                            <h4>🎯 Today's Goal:</h4>
+                            <p>Replace placeholder content with your authentic voice and personality.</p>
+                        </div>
+
+                        <div class="tip">
+                            <h5>💡 Voice Tip:</h5>
+                            <p>Write like you're talking to a friend visiting your room for the first time. Be authentic, not perfect!</p>
+                        </div>
+
+                        <div class="step-by-step">
+                            <h4>✏️ Content Integration Steps:</h4>
+                            <div class="step">
+                                <span class="step-number">1</span>
+                                Click "Edit" next to index.html in file manager
+                            </div>
+                            <div class="step">
+                                <span class="step-number">2</span>
+                                Look for placeholder text like <strong>"Welcome to my corner of the internet!"</strong> - replace with your authentic greeting
+                            </div>
+                            <div class="step">
+                                <span class="step-number">3</span>
+                                Find the section that says <strong>"Current Obsession"</strong> and replace the placeholder text with something you're genuinely excited about
+                            </div>
+                            <div class="step">
+                                <span class="step-number">4</span>
+                                Look for mood card sections with titles like <strong>"Currently Inspired By"</strong> - customize with your interests
+                            </div>
+                            <div class="step">
+                                <span class="step-number">5</span>
+                                Click "Save" and test your site to see changes
+                            </div>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Content Checklist:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson8-1">
+                                <label for="lesson8-1">Welcome message personalized in your voice</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson8-2">
+                                <label for="lesson8-2">"Current Obsession" written authentically</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson8-3">
+                                <label for="lesson8-3">Mood cards customized with your interests</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson8-4">
+                                <label for="lesson8-4">Changes saved and visible on live site</label>
+                            </div>
+                        </div>
+
+                        <div class="for-slideshow">
+                            <h5>📊 For Your Slideshow:</h5>
+                            <p>Screenshot your personalized homepage content - this shows your authentic voice development!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lesson 9 -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <div class="lesson-number">9</div>
+                        <div class="lesson-title">Image Upload & Integration</div>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="objective">
+                            <h4>🎯 Today's Goal:</h4>
+                            <p>Add your personal images to bring your digital space to life.</p>
+                        </div>
+
+                        <div class="warning">
+                            <h5>⚠️ File Naming Rules:</h5>
+                            <p>Use NO SPACES in filenames. Use dashes: my-photo.jpg ✓ NOT my photo.jpg ✗</p>
+                        </div>
+
+                        <div class="step-by-step">
+                            <h4>📸 Image Upload Process:</h4>
+                            <div class="step">
+                                <span class="step-number">1</span>
+                                Verify images properly named (profile.jpg, mood1.jpg, etc.)
+                            </div>
+                            <div class="step">
+                                <span class="step-number">2</span>
+                                In Neocities, click "Upload" and select images
+                            </div>
+                            <div class="step">
+                                <span class="step-number">3</span>
+                                Edit index.html file - click "Edit" next to it
+                            </div>
+                            <div class="step">
+                                <span class="step-number">4</span>
+                                Look for this EXACT text: <strong>src="https://via.placeholder.com/150"</strong>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">5</span>
+                                Replace the entire placeholder URL with just your filename: <strong>src="profile.jpg"</strong>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">6</span>
+                                Find other placeholder images (like <strong>src="https://via.placeholder.com/200x120"</strong>) and replace with mood1.jpg, mood2.jpg, etc.
+                            </div>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Image Integration Checklist:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson9-1">
+                                <label for="lesson9-1">Images properly renamed and uploaded</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson9-2">
+                                <label for="lesson9-2">Profile image code updated and working</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson9-3">
+                                <label for="lesson9-3">Mood card images replaced with your photos</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson9-4">
+                                <label for="lesson9-4">All images display correctly on live site</label>
+                            </div>
+                        </div>
+
+                        <div class="for-slideshow">
+                            <h5>📊 For Your Slideshow:</h5>
+                            <p>Screenshot your site with your personal images - this shows your visual identity!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lesson 10 -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <div class="lesson-number">10</div>
+                        <div class="lesson-title">About Page Creation</div>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="objective">
+                            <h4>🎯 Today's Goal:</h4>
+                            <p>Create your About page where visitors learn your story and what makes you unique.</p>
+                        </div>
+
+                        <div class="tip">
+                            <h5>💡 Storytelling Tip:</h5>
+                            <p>Focus on what's interesting about you RIGHT NOW. You don't need your whole life story!</p>
+                        </div>
+
+                        <div class="step-by-step">
+                            <h4>📝 About Page Creation:</h4>
+                            <div class="step">
+                                <span class="step-number">1</span>
+                                Download about.html template from teacher
+                            </div>
+                            <div class="step">
+                                <span class="step-number">2</span>
+                                Upload about.html to Neocities file manager
+                            </div>
+                            <div class="step">
+                                <span class="step-number">3</span>
+                                Edit about.html - look for <strong>"YOUR NAME HERE"</strong> and replace with your name
+                            </div>
+                            <div class="step">
+                                <span class="step-number">4</span>
+                                Find the <strong>"My Story"</strong> section and replace placeholder text with your authentic story
+                            </div>
+                            <div class="step">
+                                <span class="step-number">5</span>
+                                Look for fun facts cards and fill in real information about yourself
+                            </div>
+                            <div class="step">
+                                <span class="step-number">6</span>
+                                Edit index.html - find <strong>href="#"</strong> next to "About" and change to <strong>href="about.html"</strong>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">7</span>
+                                Test navigation: click "About" on your homepage to make sure it works
+                            </div>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ About Page Checklist:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson10-1">
+                                <label for="lesson10-1">About.html uploaded and accessible</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson10-2">
+                                <label for="lesson10-2">Personal story written in authentic voice</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson10-3">
+                                <label for="lesson10-3">Fun facts and values customized</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson10-4">
+                                <label for="lesson10-4">Navigation links work between pages</label>
+                            </div>
+                        </div>
+
+                        <div class="for-slideshow">
+                            <h5>📊 For Your Slideshow:</h5>
+                            <p>Screenshot your About page - this shows how you present your authentic story!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PART 4: ENHANCEMENT & POLISH -->
+        <div class="week-section" id="part4">
+            <div class="week-header">
+                <h2>✨ PART 4: Enhancement & Polish</h2>
+                <p><em>Customization, Quality Assurance & Final Presentation</em></p>
+            </div>
+            
+            <div class="lesson-container">
+                <!-- Lesson 11 -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <div class="lesson-number">11</div>
+                        <div class="lesson-title">Projects Page - Engineering Focus</div>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="objective">
+                            <h4>🎯 Today's Goal:</h4>
+                            <p>Document your engineering projects as part of your creative practice.</p>
+                        </div>
+
+                        <div class="tip">
+                            <h5>💡 Documentation Tip:</h5>
+                            <p>Focus on what you learned and found challenging, not just final results!</p>
+                        </div>
+
+                        <div class="step-by-step">
+                            <h4>🔧 Engineering Documentation:</h4>
+                            <div class="step">
+                                <span class="step-number">1</span>
+                                Upload projects.html template to Neocities
+                            </div>
+                            <div class="step">
+                                <span class="step-number">2</span>
+                                Choose 1 engineering project from class to document
+                            </div>
+                            <div class="step">
+                                <span class="step-number">3</span>
+                                Edit projects.html - find the <strong>"Engineering & Technical Projects"</strong> section
+                            </div>
+                            <div class="step">
+                                <span class="step-number">4</span>
+                                Look for placeholder text like <strong>"Robot Challenge Project"</strong> - replace with your actual project name
+                            </div>
+                            <div class="step">
+                                <span class="step-number">5</span>
+                                Find the project description and replace with your own words about what you built/learned
+                            </div>
+                            <div class="step">
+                                <span class="step-number">6</span>
+                                Update index.html - find <strong>href="#"</strong> next to "Things I'm Making" and change to <strong>href="projects.html"</strong>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">7</span>
+                                Test that all three pages link to each other correctly
+                            </div>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Engineering Portfolio Checklist:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson11-1">
+                                <label for="lesson11-1">Projects.html uploaded and linked</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson11-2">
+                                <label for="lesson11-2">Engineering project documented with authentic voice</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson11-3">
+                                <label for="lesson11-3">Learning process described honestly</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson11-4">
+                                <label for="lesson11-4">Navigation works to projects page</label>
+                            </div>
+                        </div>
+
+                        <div class="for-slideshow">
+                            <h5>📊 For Your Slideshow:</h5>
+                            <p>Screenshot your engineering project documentation - this shows portfolio development!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lesson 12 -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <div class="lesson-number">12</div>
+                        <div class="lesson-title">Projects Page - Creative Work</div>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="objective">
+                            <h4>🎯 Today's Goal:</h4>
+                            <p>Showcase your creative work and personal interests alongside technical projects.</p>
+                        </div>
+
+                        <div class="tip">
+                            <h5>💡 Creative Tip:</h5>
+                            <p>Include works in progress! Your creative process is just as valuable as finished pieces.</p>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Art Class Projects:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson12-1">
+                                <label for="lesson12-1">Document 1 project from this art class</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson12-2">
+                                <label for="lesson12-2">Include process photos if available</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson12-3">
+                                <label for="lesson12-3">Describe what you explored/learned</label>
+                            </div>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Personal Creative Work:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson12-4">
+                                <label for="lesson12-4">Add 1 personal hobby/interest</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson12-5">
+                                <label for="lesson12-5">Focus on what excites you about it</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson12-6">
+                                <label for="lesson12-6">Add 2-3 "currently learning" skills</label>
+                            </div>
+                        </div>
+
+                        <div class="for-slideshow">
+                            <h5>📊 For Your Slideshow:</h5>
+                            <p>Screenshot your complete projects page showing both technical and creative work!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lesson 13 -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <div class="lesson-number">13</div>
+                        <div class="lesson-title">Visual Customization & Enhancement</div>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="objective">
+                            <h4>🎯 Today's Goal:</h4>
+                            <p>Customize colors and add personal touches to make your site uniquely yours.</p>
+                        </div>
+
+                        <div class="step-by-step">
+                            <h4>🎨 Visual Enhancement Steps:</h4>
+                            <div class="step">
+                                <span class="step-number">1</span>
+                                Choose new color scheme that represents you
+                            </div>
+                            <div class="step">
+                                <span class="step-number">2</span>
+                                Edit your HTML file and look for <strong>background: linear-gradient</strong> followed by color codes like <strong>#667eea</strong>
+                            </div>
+                            <div class="step">
+                                <span class="step-number">3</span>
+                                Replace the color codes with your chosen colors (teacher will provide color picker tool)
+                            </div>
+                            <div class="step">
+                                <span class="step-number">4</span>
+                                Test color combinations for readability - make sure text is still easy to read
+                            </div>
+                            <div class="step">
+                                <span class="step-number">5</span>
+                                Optional: Add favorite song embed - look for <strong>&lt;iframe src="https://open.spotify.com"</strong> and replace with your song URL
+                            </div>
+                            <div class="step">
+                                <span class="step-number">6</span>
+                                Test site on different screen sizes (phone, tablet, computer)
+                            </div>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Customization Checklist:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson13-1">
+                                <label for="lesson13-1">Color scheme updated and consistent</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson13-2">
+                                <label for="lesson13-2">Colors readable on all devices</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson13-3">
+                                <label for="lesson13-3">Personal multimedia elements added</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson13-4">
+                                <label for="lesson13-4">Site tested on phone and computer</label>
+                            </div>
+                        </div>
+
+                        <div class="for-slideshow">
+                            <h5>📊 For Your Slideshow:</h5>
+                            <p>Take before/after screenshots showing your color customization choices!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lesson 14 -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <div class="lesson-number">14</div>
+                        <div class="lesson-title">Quality Check & Peer Review</div>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="objective">
+                            <h4>🎯 Today's Goal:</h4>
+                            <p>Polish your site and get feedback to ensure everything works perfectly.</p>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Technical Testing:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson14-1">
+                                <label for="lesson14-1">Click every link on every page</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson14-2">
+                                <label for="lesson14-2">Verify all images load properly</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson14-3">
+                                <label for="lesson14-3">Check text readable on all devices</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson14-4">
+                                <label for="lesson14-4">Fix any broken elements</label>
+                            </div>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Content Review:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson14-5">
+                                <label for="lesson14-5">Read all text for typos/errors</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson14-6">
+                                <label for="lesson14-6">Ensure consistent voice throughout</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson14-7">
+                                <label for="lesson14-7">Verify all content feels authentic</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson14-8">
+                                <label for="lesson14-8">Add "last updated" dates</label>
+                            </div>
+                        </div>
+
+                        <div class="for-slideshow">
+                            <h5>📊 For Your Slideshow:</h5>
+                            <p>Document your peer feedback and final polishing process!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Lesson 15 -->
+                <div class="lesson">
+                    <div class="lesson-header">
+                        <div class="lesson-number">15</div>
+                        <div class="lesson-title">Launch Presentations & Reflection</div>
+                    </div>
+                    <div class="lesson-content">
+                        <div class="objective">
+                            <h4>🎯 Today's Goal:</h4>
+                            <p>Present your digital space and reflect on your creative journey.</p>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Presentation Preparation:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson15-1">
+                                <label for="lesson15-1">Complete final slideshow with all documentation</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson15-2">
+                                <label for="lesson15-2">Prepare 2-minute site tour</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson15-3">
+                                <label for="lesson15-3">Explain one design choice you're proud of</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson15-4">
+                                <label for="lesson15-4">Share what was most challenging/rewarding</label>
+                            </div>
+                        </div>
+
+                        <div class="checklist">
+                            <h4>✅ Final Reflection Questions:</h4>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson15-5">
+                                <label for="lesson15-5">How does your final site compare to initial vision?</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson15-6">
+                                <label for="lesson15-6">What did you learn about authentic self-expression online?</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson15-7">
+                                <label for="lesson15-7">How might you continue evolving your digital space?</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input type="checkbox" id="lesson15-8">
+                                <label for="lesson15-8">What surprised you most about this process?</label>
+                            </div>
+                        </div>
+
+                        <div class="for-slideshow">
+                            <h5>📊 For Your Slideshow:</h5>
+                            <p>Include your final reflection and plans for future site evolution!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="celebration">
+            <h2>🎉 Congratulations, Digital Creator!</h2>
+            <p><strong>You've completed the Digital Spaces WebQuest!</strong></p>
+            <p>You now have your own authentic corner of the internet at <strong>yourname.neocities.org</strong></p>
+            <p>Your slideshow documents this amazing journey from research to creation.</p>
+            <p><em>Keep updating your space as you grow and create new work!</em></p>
+        </div>
+    </div>
+
+    <script>
+        // Progress tracking functionality
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
+            const total = checkboxes.length;
+            const percentage = (checked / total) * 100;
+            
+            document.getElementById('progressFill').style.width = percentage + '%';
+            
+            // Count completed lessons (assuming average 6 checkboxes per lesson)
+            const completedLessons = Math.floor(checked / 6);
+            document.getElementById('progressText').textContent = `${completedLessons} / 15 Lessons`;
+            
+            // Store progress
+            localStorage.setItem('webquestProgress', JSON.stringify({
+                checked: checked,
+                total: total,
+                checkboxStates: Array.from(checkboxes).map(cb => cb.checked)
+            }));
+        }
+
+        // Load saved progress
+        function loadProgress() {
+            const saved = localStorage.getItem('webquestProgress');
+            if (saved) {
+                const progress = JSON.parse(saved);
+                const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                progress.checkboxStates.forEach((checked, index) => {
+                    if (checkboxes[index]) {
+                        checkboxes[index].checked = checked;
+                    }
+                });
+                updateProgress();
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            loadProgress();
+            
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', updateProgress);
+            });
+        });
+
+        // Celebration when complete
+        function checkCompletion() {
+            const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            const checked = document.querySelectorAll('input[type="checkbox"]:checked').length;
+            
+            if (checked === checkboxes.length) {
+                setTimeout(() => {
+                    document.querySelector('.celebration').style.animation = 'pulse 2s infinite';
+                    alert('🎉 Amazing! You\'ve completed the entire Digital Spaces WebQuest! Your website is live and your slideshow is ready!');
+                }, 500);
+            }
+        }
+
+        document.addEventListener('change', function(e) {
+            if (e.target.type === 'checkbox') {
+                setTimeout(checkCompletion, 100);
+            }
+        });
+
+        // Add pulse animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { transform: scale(1); }
+                50% { transform: scale(1.05); }
+                100% { transform: scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
